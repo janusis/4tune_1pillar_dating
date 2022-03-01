@@ -2,10 +2,11 @@ package sajudating.jpadating.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.w3c.dom.Text;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @RequiredArgsConstructor
@@ -13,18 +14,19 @@ import java.time.LocalDateTime;
 public class Board {
 
     @Id @GeneratedValue
+    @Column(name = "board_id")
     private Long id;
 
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER")
+    @JoinColumn(name = "member")
     private Member member;
 
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "longtext")
     private String context;
 
     private Long views;
@@ -34,7 +36,13 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
 
+    @OneToMany(mappedBy = "board")
+    private List<Images> imagesBoardList= new ArrayList<>();
 
+    @OneToMany(mappedBy = "boardId")
+    private List<ReportBoard> reportBoardList= new ArrayList<>();
+
+    private Long reportConut;
 
 
 

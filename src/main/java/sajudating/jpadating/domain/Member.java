@@ -1,11 +1,13 @@
 package sajudating.jpadating.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,21 +15,26 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Member {
 
+
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
+    @Column(name = "member_id")
     private Long id;
 
     private String userId;
-
     private String pw;
 
     private String name;
     private String email;
     private String phone;
-    private String birthday;
-    private String joinday;
+    private LocalDate birthday;
+    private String birthTime;
     private String nickname;
-    private LocalDateTime modifiedDate;
+    private String dayPillar;
+
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
 
 
 
@@ -45,14 +52,37 @@ public class Member {
     @AttributeOverride(name = "zipcode", column = @Column(name="company_zipcode"))
     private Address companyAddress;
 
-    @OneToMany(mappedBy = "member")
-    private List<Images> imagesList;
+
+    private LocalDateTime regDate;
+    private LocalDateTime modifiedDate;
 
     @OneToMany(mappedBy = "member")
-    private List<Board> boardList;
+    private List<Images> imagesList=new ArrayList<>();
 
 
+    @OneToMany(mappedBy = "member")
+    private List<Board> boardList= new ArrayList<>();
 
+    @Builder
+    public Member(String userId, String pw, String name, String email, String phone, LocalDate birthday, String birthTime,
+                  String dayPillar, String nickname,
+                  Gender gender, Address homeAddress, Address companyAddress,
+                  LocalDateTime regDate, LocalDateTime modifiedDate) {
+        this.userId=userId;
+        this.pw = pw;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.birthTime = birthTime;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.homeAddress = homeAddress;
+        this.companyAddress = companyAddress;
+        this.regDate = regDate;
+        this.modifiedDate = modifiedDate;
+    }
 
 
 }
+

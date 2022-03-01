@@ -11,12 +11,17 @@ import javax.persistence.*;
 @Getter
 public class Images {
     @Id @GeneratedValue
+    @Column(name = "images_id")
     private Long id;
 
 
     @ManyToOne(fetch = FetchType.LAZY )
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY )
+    @JoinColumn(name = "board_id")
+    private Board board;
 
     @Lob
     @Column(name = "image")
