@@ -6,13 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
-import sajudating.jpadating.form.MemberForm;
+import sajudating.jpadating.DTO.MemberDTO;
 import sajudating.jpadating.service.MemberService;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Transactional
@@ -32,7 +30,7 @@ public class MemberController {
     }
 
     @PostMapping("members/new")
-    public String create(MemberForm form){
+    public String create(MemberDTO form){
 
 
         memberService.join(form);

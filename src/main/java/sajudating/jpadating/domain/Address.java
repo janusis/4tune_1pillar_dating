@@ -11,7 +11,6 @@ import javax.persistence.*;
 @RequiredArgsConstructor
 public class Address {
 
-
     private String lotNumAddress;
     private String roadNameAddress;
     private String detail_address;

@@ -20,7 +20,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String userId;
+    private final String userId;
     private String pw;
 
     private String name;
@@ -53,7 +53,7 @@ public class Member {
     private Address companyAddress;
 
 
-    private LocalDateTime regDate;
+    private final LocalDateTime regDate;
     private LocalDateTime modifiedDate;
 
     @OneToMany(mappedBy = "member")

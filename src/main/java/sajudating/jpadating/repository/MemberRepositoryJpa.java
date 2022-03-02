@@ -1,14 +1,14 @@
 package sajudating.jpadating.repository;
 
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domain.SajuCalender;
-import sajudating.jpadating.form.MemberForm;
+import sajudating.jpadating.DTO.MemberDTO;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,24 +26,28 @@ public class MemberRepositoryJpa implements MemberRepository{
 
 
 
-    public Optional<Member> save(MemberForm form){
-        Address homeAddress = new Address(form.getHomeLotNumAddress(),form.getHomeRoadNameAddress(),
-                form.getHomeDetail_address(),form.getHomeDetail_address());
-        Address companyAddress = new Address(form.getCompanyLotNumAddress(),form.getCompanyRoadNameAddress(),
-                form.getHomeDetail_address(),form.getCompanyZipcode());
+    public Optional<Member> save(MemberDTO memberDTO){
+        Address homeAddress = new Address(memberDTO.getHomeLotNumAddress(),memberDTO.getHomeRoadNameAddress(),
+                memberDTO.getHomeDetail_address(),memberDTO.getHomeDetail_address());
+        Address companyAddress = new Address(memberDTO.getCompanyLotNumAddress(),memberDTO.getCompanyRoadNameAddress(),
+                memberDTO.getHomeDetail_address(),memberDTO.getCompanyZipcode());
 
         List<SajuCalender> resultList = em.createQuery("select s from SajuCalender s where s.year = :year and s.month = :month and s.day = :day ", SajuCalender.class)
-                .setParameter("year", member.build().getBirthday().getYear())
-                .setParameter("month", member.build().getBirthday().getMonth())
-                .setParameter("day", member.build().getBirthday().getDayOfMonth())
+                .setParameter("year", memberDTO.getBirthday().getYear())
+                .setParameter("month",memberDTO.getBirthday().getMonth())
+                .setParameter("day", memberDTO.getBirthday().getDayOfMonth())
                 .getResultList();
 
+        LocalDateTime regDate = LocalDateTime.now();
         String dayWords = resultList.get(0).getDayWords();
 
+        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
+                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
+                memberDTO.getGender(),
+                homeAddress,companyAddress, regDate , regDate );
 
-
-//        return resultList.stream().findAny();
-        return null;
+        em.persist(member);
+        return Optional.ofNullable(member);
     }
 
     public Optional<Member> findById(Long id) {
