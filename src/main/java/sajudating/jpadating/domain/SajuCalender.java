@@ -9,19 +9,19 @@ import javax.persistence.*;
 public class SajuCalender {
 
     @Id @GeneratedValue
-    private Long id;//
+    private Long id;
 
-    private Short year;//
-    private Short lunarYear;//
+    private Integer year;
+    private Integer lunarYear;
     private String yearWords;
-    private Byte month;//
-    private Byte lunarMonth;//
-    private String monthWords;//
-    private Byte day;//
-    private Byte lunarDay;//
-    private String dayWords;//
+    private Integer month;
+    private Integer lunarMonth;
+    private String monthWords;
+    private Integer day;
+    private Integer lunarDay;
+    private String dayWords;
     @Enumerated(EnumType.STRING)
-    private MonthCompare monthCompare;//
+    private MonthCompare monthCompare;
 
 
 

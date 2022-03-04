@@ -28,8 +28,8 @@ public class MemberService {
 
     }
 
-    private void validateDuplicateMember(MemberDTO form) {
-        memberRepository.findByName(form.getUserId()).ifPresent(m-> {
+    private void validateDuplicateMember(MemberDTO memberDTO) {
+        memberRepository.findByName(memberDTO.getUserId()).ifPresent(m-> {
                             throw new IllegalStateException("이미 존재하는 아이디 입니다");
                         }
                 );
@@ -42,8 +42,8 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findOne(Long memberId){
-        return memberRepository.findById(memberId);
+    public Optional<Member> findOne(String memberUserid){
+        return memberRepository.findByUserId(memberUserid);
     }
 
     /*

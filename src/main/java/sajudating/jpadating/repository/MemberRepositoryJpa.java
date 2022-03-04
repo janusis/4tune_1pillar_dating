@@ -1,5 +1,6 @@
 package sajudating.jpadating.repository;
 
+
 import org.springframework.stereotype.Repository;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
@@ -9,6 +10,7 @@ import sajudating.jpadating.DTO.MemberDTO;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,19 +24,17 @@ public class MemberRepositoryJpa implements MemberRepository{
         this.em = em;
     }
 
-
-
-
-
+    //회원가입
     public Optional<Member> save(MemberDTO memberDTO){
         Address homeAddress = new Address(memberDTO.getHomeLotNumAddress(),memberDTO.getHomeRoadNameAddress(),
                 memberDTO.getHomeDetail_address(),memberDTO.getHomeDetail_address());
         Address companyAddress = new Address(memberDTO.getCompanyLotNumAddress(),memberDTO.getCompanyRoadNameAddress(),
                 memberDTO.getHomeDetail_address(),memberDTO.getCompanyZipcode());
 
-        List<SajuCalender> resultList = em.createQuery("select s from SajuCalender s where s.year = :year and s.month = :month and s.day = :day ", SajuCalender.class)
+        List<SajuCalender> resultList = em.createQuery(
+                "select s from SajuCalender s where s.year = :year and s.month = :month and s.day = :day ", SajuCalender.class)
                 .setParameter("year", memberDTO.getBirthday().getYear())
-                .setParameter("month",memberDTO.getBirthday().getMonth())
+                .setParameter("month",memberDTO.getBirthday().getMonthValue())
                 .setParameter("day", memberDTO.getBirthday().getDayOfMonth())
                 .getResultList();
 
@@ -43,20 +43,23 @@ public class MemberRepositoryJpa implements MemberRepository{
 
         Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
                 memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
-                memberDTO.getGender(),
-                homeAddress,companyAddress, regDate , regDate );
+                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
 
         em.persist(member);
         return Optional.ofNullable(member);
     }
 
-    public Optional<Member> findById(Long id) {
+    //유저아이디로 멤버찾기
+    public Optional<Member> findByUserId(String userid) {
 
-        Member member = em.find(Member.class, id);
+        Member member = em.createQuery("select m from Member m where m.userid = :userid", Member.class)
+                .setParameter("userid", userid)
+                .getResultList();
 
         return Optional.ofNullable(member);
     }
 
+    //관리자 기능
     public Optional<Member> findByName(String name) {
 
         List<Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
@@ -65,7 +68,7 @@ public class MemberRepositoryJpa implements MemberRepository{
 
         return result.stream().findAny();
     }
-
+    //관리자 기능
     public List<Member> findAll() {
 
         return em.createQuery("select m from Member m", Member.class).

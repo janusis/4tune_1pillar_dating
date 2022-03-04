@@ -20,9 +20,9 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+
     private final String userId;
     private String pw;
-
     private String name;
     private String email;
     private String phone;
@@ -34,8 +34,6 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-
 
 
     @Embedded
