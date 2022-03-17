@@ -24,11 +24,13 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    //회원 가입(get)
     @GetMapping("/members/new")
     public String createForm(){
         return "members/createMemberForm";
     }
 
+    //회원 가입(post)
     @PostMapping("members/new")
     public String create(MemberDTO form){
 
@@ -38,6 +40,7 @@ public class MemberController {
         return "redirect:/";
     }
 
+    //모든 멤버 조회
     @GetMapping("/members")
     public String list(Model model){
         List<Member> members = memberService.findMembers();

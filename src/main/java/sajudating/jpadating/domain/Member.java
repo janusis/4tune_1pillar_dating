@@ -2,6 +2,7 @@ package sajudating.jpadating.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class Member {
     private Long id;
 
 
-    private final String userId;
+    private String userId;
     private String pw;
     private String name;
     private String email;
@@ -51,7 +52,7 @@ public class Member {
     private Address companyAddress;
 
 
-    private final LocalDateTime regDate;
+    private LocalDateTime regDate;
     private LocalDateTime modifiedDate;
 
     @OneToMany(mappedBy = "member")
@@ -60,6 +61,8 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Board> boardList= new ArrayList<>();
+
+
 
     @Builder
     public Member(String userId, String pw, String name, String email, String phone, LocalDate birthday, String birthTime,
