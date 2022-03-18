@@ -30,6 +30,7 @@ public class MemberRepositoryJpa implements MemberRepository{
 
         Address homeAddress = new Address(memberDTO.getHomeLotNumAddress(),memberDTO.getHomeRoadNameAddress(),
                 memberDTO.getHomeDetail_address(),memberDTO.getHomeDetail_address());
+
         Address companyAddress = new Address(memberDTO.getCompanyLotNumAddress(),memberDTO.getCompanyRoadNameAddress(),
                 memberDTO.getHomeDetail_address(),memberDTO.getCompanyZipcode());
 
