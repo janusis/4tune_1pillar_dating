@@ -1,16 +1,17 @@
 package sajudating.jpadating.DTO;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import sajudating.jpadating.domain.Gender;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class MemberDTO {
 
@@ -36,26 +37,5 @@ public class MemberDTO {
     private String CompanyZipcode;
 
 
-    public MemberDTO(String userId, String pw, String name, String email, String phone, LocalDate birthday,
-                     String birthTime, String nickname, Gender gender, String homeLotNumAddress, String homeRoadNameAddress,
-                     String homeDetail_address, String homeZipcode, String companyLotNumAddress, String companyRoadNameAddress,
-                     String companyDetail_address, String companyZipcode) {
-        this.userId = userId;
-        this.pw = pw;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.birthTime = birthTime;
-        this.nickname = nickname;
-        this.gender = gender;
-        HomeLotNumAddress = homeLotNumAddress;
-        HomeRoadNameAddress = homeRoadNameAddress;
-        HomeDetail_address = homeDetail_address;
-        HomeZipcode = homeZipcode;
-        CompanyLotNumAddress = companyLotNumAddress;
-        CompanyRoadNameAddress = companyRoadNameAddress;
-        CompanyDetail_address = companyDetail_address;
-        CompanyZipcode = companyZipcode;
-    }
+
 }

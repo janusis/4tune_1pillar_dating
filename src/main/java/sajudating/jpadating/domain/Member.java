@@ -2,10 +2,11 @@ package sajudating.jpadating.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import sajudating.jpadating.DTO.MemberDTO;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,7 +23,9 @@ public class Member {
     private Long id;
 
 
+    @NotEmpty
     private String userId;
+
     private String pw;
     private String name;
     private String email;
@@ -83,6 +86,75 @@ public class Member {
         this.regDate = regDate;
         this.modifiedDate = modifiedDate;
     }
+
+
+    private void changePw(String pw){
+        if(pw!=null)
+            this.pw=pw;
+    }
+    private void changeName(String name){
+        if(name!=null)
+            this.name=name;
+    }
+    private void changeEmail(String email){
+        if(email!=null)
+            this.email=email;
+    }
+    private void changePhone(String phone){
+        if(phone!=null)
+            this.phone=phone;
+    }
+    private void changeBirthday(LocalDate birthday){
+        if(birthday!=null)
+            this.birthday=birthday;
+    }
+    private void changeBirthTime(String birthTime){
+        if(birthTime!=null)
+            this.birthTime=birthTime;
+    }
+    private void changeNickname(String nickname){
+        if(nickname!=null)
+            this.nickname=nickname;
+    }
+    private void changeGender(Gender gender){
+        if(gender!=null)
+            this.gender=gender;
+    }
+    private void changeHomeAddress(Address homeAddress){
+        if(homeAddress!=null)
+            this.homeAddress=homeAddress;
+    }
+    private void changeCompanyAddress(Address companyAddress){
+        if(companyAddress!=null)
+            this.companyAddress=companyAddress;
+    }
+    private void changeModifiedDate(LocalDateTime modifiedDate){
+        if(modifiedDate!=null)
+            this.modifiedDate=modifiedDate;
+    }
+
+    public Long updateMember(MemberDTO memberDTO){
+        if(memberDTO.getUserId()!=null){
+            throw new IllegalStateException("아이디는 변경할 수 없습니다.");
+        }
+        changePw(memberDTO.getPw());
+        changeName(memberDTO.getName());
+        changeEmail(memberDTO.getEmail());
+        changePhone(memberDTO.getPhone());
+        changeBirthday(memberDTO.getBirthday());
+        changeBirthTime(memberDTO.getBirthTime());
+        changeNickname(memberDTO.getNickname());
+        changeGender(memberDTO.getGender());
+        Address address1 = new Address(memberDTO.getHomeLotNumAddress(), memberDTO.getHomeRoadNameAddress(),
+                memberDTO.getHomeDetail_address(), memberDTO.getHomeDetail_address());
+        changeHomeAddress(address1);
+        Address address2 = new Address(memberDTO.getCompanyLotNumAddress(), memberDTO.getCompanyRoadNameAddress(),
+                memberDTO.getHomeDetail_address(), memberDTO.getCompanyZipcode());
+        changeCompanyAddress(address2);
+        changeModifiedDate(LocalDateTime.now());
+        return this.getId();
+    }
+
 
 
 }

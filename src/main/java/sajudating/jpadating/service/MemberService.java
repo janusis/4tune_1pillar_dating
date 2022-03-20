@@ -1,14 +1,16 @@
 package sajudating.jpadating.service;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
+import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.DTO.MemberDTO;
 import sajudating.jpadating.repository.MemberRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -23,11 +25,19 @@ public class MemberService {
     /*
       회원가입
          */
-    public Optional<Member> join(MemberDTO memberDTO){
+    public Long join(MemberDTO memberDTO){
         validateDuplicateMember(memberDTO); //중복회원검증
-        Optional<Member> member = memberRepository.save(memberDTO);
-        return member.stream().findAny();
+        Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
+        Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
+        String dayWords = memberRepository.findDayWord(memberDTO);
 
+        LocalDateTime regDate = LocalDateTime.now();
+
+        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
+                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
+                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
+
+        return memberRepository.save(member);
     }
     /*
     유저 아이디 중복 검증
@@ -47,9 +57,16 @@ public class MemberService {
     }
 
     /*
+    pk를 이용해서 멤버 조회
+     */
+    public Optional<Member> findMember(Long id){
+        return memberRepository.findById(id);
+    }
+
+    /*
     아이디를 이용해서 멤버 조회
      */
-    public Optional<Member> findOne(String memberUserid){
+    public Optional<Member> findOneByUserId(String memberUserid){
         return memberRepository.findByUserId(memberUserid);
     }
 
@@ -69,5 +86,22 @@ public class MemberService {
         return memberRepository.findPWByUserIdAndNameAndBirthday(userid, name, birthday);
     }
 
+    /*
+    회원정보 수정
+     */
+    public Long changeMemberInfo(MemberDTO memberDTO, Long id) {
+        Optional<Member> optionalMember = findMember(id);
+        Member member = optionalMember.orElseThrow(NoSuchElementException::new);
+        member.updateMember(memberDTO);
+        return memberRepository.change(member);
+    }
+
+    /*
+    회원 삭제
+     */
+    public Long deleteMember(Member member){
+        memberRepository.delete(member);
+        return member.getId();
+    }
 
 }

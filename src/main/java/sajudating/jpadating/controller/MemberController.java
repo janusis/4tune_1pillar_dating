@@ -32,10 +32,10 @@ public class MemberController {
 
     //회원 가입(post)
     @PostMapping("members/new")
-    public String create(MemberDTO form){
+    public String create(MemberDTO memberDTO){
 
 
-        memberService.join(form);
+        memberService.join(memberDTO);
 
         return "redirect:/";
     }
