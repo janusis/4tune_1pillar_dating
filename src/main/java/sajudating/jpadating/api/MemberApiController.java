@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-
+@RequestMapping("/v1/api/members")
 public class MemberApiController {
 
     private final MemberService memberService;
 
     //회원가입
-    @PostMapping("/api/join/members")
+    @PostMapping("")
     public CreateMemberResponse saveMember1(@RequestBody @Valid MemberDTO memberDTO){
         Long id = memberService.join(memberDTO);
         String userId = memberDTO.getUserId();
@@ -40,7 +40,7 @@ public class MemberApiController {
 
     //회원조회
 
-    @GetMapping("/api/search/members")
+    @GetMapping("")
     public Result listMember(){
         List<Member> members = memberService.findMembers();
         List<MemberListDTO> collect = members.stream()
@@ -66,7 +66,7 @@ public class MemberApiController {
 
     //회원수정
 
-    @PutMapping("/api/update/members/{id}")
+    @PutMapping("/{id}")
     public UpdateMemberResponse updateMember(
             @PathVariable("id") Long id,
             @RequestBody @Valid MemberDTO memberDTO){
@@ -84,7 +84,7 @@ public class MemberApiController {
     }
 
     //회원삭제
-    @DeleteMapping("/api/delete/members/{id}")
+    @DeleteMapping("/{id}")
     public DeleteMemberResponse deleteMember(
             @PathVariable("id") Long id){
         Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
