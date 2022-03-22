@@ -25,11 +25,11 @@
 
 # API Swagger
 
-![image](https://github.com/jojojojocho/jpadating/edit/main/img/swagger/멤버CRUD_전체.PNG)
-![image](https://github.com/jojojojocho/jpadating/edit/main/img/swagger/멤버CRUD_멤버저장.PNG)
-![image](https://github.com/jojojojocho/jpadating/edit/main/img/swagger/멤버CRUD_멤버조회.PNG)
-![image](https://github.com/jojojojocho/jpadating/edit/main/img/swagger/멤버CRUD_멤버수정.PNG)
-![image](https://github.com/jojojojocho/jpadating/edit/main/img/swagger/멤버CRUD_멤버삭제.PNG)
+![멤버CRUD_전체](https://user-images.githubusercontent.com/43841476/159403065-f5679637-cae8-45e2-a99b-e61b21f77c12.PNG)
+![멤버CRUD_멤버저장](https://user-images.githubusercontent.com/43841476/159403117-29175323-6053-461c-926e-006816b0f5db.PNG)
+![멤버CRUD_멤버조회](https://user-images.githubusercontent.com/43841476/159403125-1b52fa03-b477-4d0c-bdd3-19eda185b9eb.PNG)
+![멤버CRUD_멤버수정](https://user-images.githubusercontent.com/43841476/159403127-653b3cf4-e128-4769-a832-567faf9a0daa.PNG)
+![멤버CRUD_멤버삭제](https://user-images.githubusercontent.com/43841476/159403133-db8de3b3-14c9-4ba7-b5ab-f478d0a4dde4.PNG)
 
 * 해당 API는 Swagger를 통해 테스트 해 볼 수 있습니다. ( " http://localhost:8080/swagger-ui.html " )
 
