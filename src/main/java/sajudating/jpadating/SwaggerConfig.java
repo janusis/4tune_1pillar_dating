@@ -23,8 +23,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/v1/api/**/**"))// /v1/api/** 인 URL들만 필터링
+                .paths(PathSelectors.any())// /v1/api/** 인 URL들만 필터링
                 .build()
+                .pathMapping("/")
                 .apiInfo(apiInfo())
                 .enable(true) ;
     }
@@ -37,12 +38,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .build();
     }
 
-    @Override protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+
 
 
 

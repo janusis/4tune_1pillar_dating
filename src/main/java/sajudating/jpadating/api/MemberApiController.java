@@ -75,6 +75,7 @@ public class MemberApiController {
         Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
         return new UpdateMemberResponse(member.getId(), member.getUserId(), member.getName());
     }
+
     @Data
     @AllArgsConstructor
     static class UpdateMemberResponse {
@@ -85,12 +86,12 @@ public class MemberApiController {
 
     //회원삭제
     @DeleteMapping("/{id}")
-    public DeleteMemberResponse deleteMember(
-            @PathVariable("id") Long id){
+    public DeleteMemberResponse deleteMember(@PathVariable("id") Long id){
         Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
         memberService.deleteMember(member);
         return new DeleteMemberResponse(member.getId(), member.getUserId(), member.getName());
     }
+
     @Data
     @AllArgsConstructor
     static class DeleteMemberResponse {

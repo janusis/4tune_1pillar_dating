@@ -101,7 +101,7 @@ public class MemberService {
      */
     public Long deleteMember(Member member){
         memberRepository.delete(member);
-        return member.getId();
+       return member.getId();
     }
 
 }

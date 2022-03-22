@@ -15,7 +15,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
-@Transactional
 public class MemberRepository {
     private final EntityManager em;
 
@@ -121,7 +120,8 @@ public class MemberRepository {
 
     //멤버 삭제
     public Long delete(Member member){
-        em.remove(member);
+        Member member1 = em.find(Member.class, member.getId());
+        em.remove(member1);
         return member.getId();
     }
 
