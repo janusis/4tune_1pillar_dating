@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import sajudating.jpadating.DTO.MemberDTO;
+import sajudating.jpadating.apiDto.*;
+import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.service.MemberService;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -29,43 +29,33 @@ public class MemberApiController {
         String name = memberDTO.getName();
         return new CreateMemberResponse(id,userId,name);
     }
-    @Data
-    @AllArgsConstructor
-    static class CreateMemberResponse {
-        private Long id;
-        private String userId;
-        private String name;
-    }
 
-
-    //회원조회
-
+    //회원조회(전체)
     @GetMapping("")
-    public Result listMember(){
+    public WrapResult listMember(){
         List<Member> members = memberService.findMembers();
-        List<MemberListDTO> collect = members.stream()
-                .map(m -> new MemberListDTO(m.getId(), m.getUserId(), m.getNickname(), m.getName()))
+        List<AllMembersFindListResponse> collect = members.stream()
+                .map(m -> new AllMembersFindListResponse(m.getId(), m.getUserId(), m.getNickname(), m.getName()))
                 .collect(Collectors.toList());
 
-        return new Result(collect);
+        return new WrapResult(collect);
 
     }
-    @Data
-    @AllArgsConstructor
-    static class Result<T>{
-        private T data;
-    }
-    @Data
-    @AllArgsConstructor
-    static class MemberListDTO{
-        private Long id;
-        private String userId;
-        private String nickName;
-        private String name;
-    }
+
+
+
+    //회원조회(이름으로 조회)
+//    @GetMapping("/{name}")
+//    public MemberDTO
+
+    //회원조회(이메일로 조회)
+//    @GetMapping("/{email}")
+//    public MemberDTO
+
+    //회원조회(일주로 조회)
+
 
     //회원수정
-
     @PutMapping("/{id}")
     public UpdateMemberResponse updateMember(
             @PathVariable("id") Long id,
@@ -76,14 +66,6 @@ public class MemberApiController {
         return new UpdateMemberResponse(member.getId(), member.getUserId(), member.getName());
     }
 
-    @Data
-    @AllArgsConstructor
-    static class UpdateMemberResponse {
-        private Long id;
-        private String userId;
-        private String name;
-    }
-
     //회원삭제
     @DeleteMapping("/{id}")
     public DeleteMemberResponse deleteMember(@PathVariable("id") Long id){
@@ -92,12 +74,6 @@ public class MemberApiController {
         return new DeleteMemberResponse(member.getId(), member.getUserId(), member.getName());
     }
 
-    @Data
-    @AllArgsConstructor
-    static class DeleteMemberResponse {
-        private Long id;
-        private String userId;
-        private String name;
-    }
+
 
 }

@@ -3,7 +3,7 @@ package sajudating.jpadating.service;
 import org.springframework.stereotype.Service;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
-import sajudating.jpadating.DTO.MemberDTO;
+import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.repository.MemberRepository;
 
 import javax.transaction.Transactional;

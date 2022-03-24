@@ -5,10 +5,9 @@ import org.springframework.stereotype.Repository;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domain.SajuCalender;
-import sajudating.jpadating.DTO.MemberDTO;
+import sajudating.jpadating.domainDto.MemberDTO;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;

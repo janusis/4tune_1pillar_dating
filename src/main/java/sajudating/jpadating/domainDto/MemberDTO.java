@@ -1,4 +1,4 @@
-package sajudating.jpadating.DTO;
+package sajudating.jpadating.domainDto;
 
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import sajudating.jpadating.domain.Gender;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
@@ -36,6 +35,7 @@ public class MemberDTO {
     private String birthTime;
     @NotBlank
     private String nickname;
+    private String dayPillar;
     public Gender gender;
 
 

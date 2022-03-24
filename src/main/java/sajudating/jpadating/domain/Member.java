@@ -3,7 +3,7 @@ package sajudating.jpadating.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import sajudating.jpadating.DTO.MemberDTO;
+import sajudating.jpadating.domainDto.MemberDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

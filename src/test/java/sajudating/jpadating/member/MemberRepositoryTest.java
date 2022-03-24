@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import sajudating.jpadating.DTO.MemberDTO;
+import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Gender;
 import sajudating.jpadating.domain.Member;
