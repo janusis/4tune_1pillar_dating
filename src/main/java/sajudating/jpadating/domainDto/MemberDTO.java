@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import sajudating.jpadating.domain.Gender;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
@@ -36,6 +38,7 @@ public class MemberDTO {
     @NotBlank
     private String nickname;
     private String dayPillar;
+    @Enumerated(EnumType.STRING)
     public Gender gender;
 
 

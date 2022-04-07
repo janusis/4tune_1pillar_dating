@@ -1,5 +1,7 @@
 package sajudating.jpadating.domain;
 
+import com.mysql.cj.jdbc.Clob;
+import com.mysql.cj.jdbc.NClob;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@RequiredArgsConstructor
 @Getter
 public class Board {
 
@@ -20,14 +21,15 @@ public class Board {
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
 
+    @Lob
     @Column(columnDefinition = "longtext")
-    private String context;
+    private Clob context;
 
     private Long views;
     private Long good;
@@ -44,6 +46,20 @@ public class Board {
 
     private Long reportConut;
 
-
-
+    public Board(String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
+                 Clob context, Long views, Long good, Long bad, BoardType boardType,
+                 List<Images> imagesBoardList, List<ReportBoard> reportBoardList, Long reportConut) {
+        this.title = title;
+        this.member = member;
+        this.pubTime = pubTime;
+        this.modTime = modTime;
+        this.context = context;
+        this.views = views;
+        this.good = good;
+        this.bad = bad;
+        this.boardType = boardType;
+        this.imagesBoardList = imagesBoardList;
+        this.reportBoardList = reportBoardList;
+        this.reportConut = reportConut;
+    }
 }
