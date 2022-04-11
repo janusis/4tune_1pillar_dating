@@ -26,64 +26,64 @@ public class MemberRepositoryTest {
     @Autowired
     MemberService memberService;
 
-    @Test
-    void 회원가입(){
-        //given
-        MemberDTO memberDTO = new MemberDTO("userid", "pw", "name", "email",
-                "phone", LocalDate.now(), "유시", "닉네임",
-                Gender.MALE, "add", "add","add", "add",
-                "add1", "add1", "add1", "add1");
-
-        Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
-        Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
-        String dayWords = memberRepository.findDayWord(memberDTO);
-
-        LocalDateTime regDate = LocalDateTime.now();
-
-        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
-                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords, memberDTO.getNickname(),
-                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
-
-        //when
-
-        Long id = memberRepository.save(member);
-        Optional<Member> optionalMember = memberRepository.findById(id);
-
-        //then
-        Assertions.assertThat(optionalMember.orElseThrow(NoSuchElementException::new).getId())
-                .isEqualTo(member.getId());
-    }
-
-    @Test
-    public void 유저아이디로_멤버조회() {
-        //given
-        MemberDTO memberDTO = new MemberDTO("userid", "pw", "name", "email",
-                "phone", LocalDate.now(), "유시", "닉네임",
-                Gender.MALE, "add", "add","add", "add",
-                "add1", "add1", "add1", "add1");
-
-        Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
-        Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
-        String dayWords = memberRepository.findDayWord(memberDTO);
-
-        LocalDateTime regDate = LocalDateTime.now();
-
-        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
-                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
-                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
-
-        Long id = memberRepository.save(member);
-
-        //when
-        Optional<Member> optionalMember = memberRepository.findById(id);
-        Optional<Member> byUserId = memberRepository.findByUserId(optionalMember.orElseThrow(NoSuchElementException::new).getUserId());
-
-        //then
-        Assertions.assertThat(byUserId.orElseThrow(NoSuchElementException::new).getUserId())
-                .isEqualTo(member.getUserId());
-
-
-    }
+//    @Test
+//    void 회원가입(){
+//        //given
+//        MemberDTO memberDTO = new MemberDTO("userid", "pw", "name", "email",
+//                "phone", LocalDate.now(), "유시", "닉네임",
+//                Gender.MALE, "add", "add","add", "add",
+//                "add1", "add1", "add1", "add1");
+//
+//        Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
+//        Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
+//        String dayWords = memberRepository.findDayWord(memberDTO);
+//
+//        LocalDateTime regDate = LocalDateTime.now();
+//
+//        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
+//                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords, memberDTO.getNickname(),
+//                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
+//
+//        //when
+//
+//        Long id = memberRepository.save(member);
+//        Optional<Member> optionalMember = memberRepository.findById(id);
+//
+//        //then
+//        Assertions.assertThat(optionalMember.orElseThrow(NoSuchElementException::new).getId())
+//                .isEqualTo(member.getId());
+//    }
+//
+//    @Test
+//    public void 유저아이디로_멤버조회() {
+//        //given
+//        MemberDTO memberDTO = new MemberDTO("userid", "pw", "name", "email",
+//                "phone", LocalDate.now(), "유시", "닉네임",
+//                Gender.MALE, "add", "add","add", "add",
+//                "add1", "add1", "add1", "add1");
+//
+//        Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
+//        Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
+//        String dayWords = memberRepository.findDayWord(memberDTO);
+//
+//        LocalDateTime regDate = LocalDateTime.now();
+//
+//        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
+//                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
+//                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
+//
+//        Long id = memberRepository.save(member);
+//
+//        //when
+//        Optional<Member> optionalMember = memberRepository.findById(id);
+//        Optional<Member> byUserId = memberRepository.findByUserId(optionalMember.orElseThrow(NoSuchElementException::new).getUserId());
+//
+//        //then
+//        Assertions.assertThat(byUserId.orElseThrow(NoSuchElementException::new).getUserId())
+//                .isEqualTo(member.getUserId());
+//
+//
+//    }
 
 
 //    @Test

@@ -1,9 +1,7 @@
 package sajudating.jpadating.domain;
 
 import com.mysql.cj.jdbc.Clob;
-import com.mysql.cj.jdbc.NClob;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,6 +16,7 @@ public class Board {
     @Column(name = "board_id")
     private Long id;
 
+    private Long rowNum;
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,6 +44,10 @@ public class Board {
     private List<ReportBoard> reportBoardList= new ArrayList<>();
 
     private Long reportConut;
+
+    protected Board(){
+
+    }
 
     public Board(String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
                  Clob context, Long views, Long good, Long bad, BoardType boardType,

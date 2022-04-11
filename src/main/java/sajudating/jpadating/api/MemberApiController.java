@@ -1,10 +1,8 @@
 package sajudating.jpadating.api;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import sajudating.jpadating.apiDto.*;
+import sajudating.jpadating.apiDto.member.*;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.service.MemberService;

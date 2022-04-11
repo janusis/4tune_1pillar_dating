@@ -1,4 +1,4 @@
-package sajudating.jpadating.apiDto;
+package sajudating.jpadating.apiDto.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

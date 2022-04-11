@@ -23,6 +23,7 @@ import java.util.List;
 public class BoardDTO {
 
 
+    private Long rowNum;
     private String title;
 
     private Member member;
