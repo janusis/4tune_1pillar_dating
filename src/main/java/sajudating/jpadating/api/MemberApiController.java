@@ -1,7 +1,12 @@
 package sajudating.jpadating.api;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sajudating.jpadating.apiDto.common.CommonApiResponse;
+import sajudating.jpadating.apiDto.common.ResponseMessage;
+import sajudating.jpadating.apiDto.common.StatusCode;
 import sajudating.jpadating.apiDto.member.*;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
@@ -21,22 +26,24 @@ public class MemberApiController {
 
     //회원가입
     @PostMapping("")
-    public CreateMemberResponse saveMember1(@RequestBody @Valid MemberDTO memberDTO){
+    public ResponseEntity saveMember1(@RequestBody @Valid MemberDTO memberDTO){
         Long id = memberService.join(memberDTO);
-        String userId = memberDTO.getUserId();
-        String name = memberDTO.getName();
-        return new CreateMemberResponse(id,userId,name);
+//        String userId = memberDTO.getUserId();
+//        String name = memberDTO.getName();
+        return new ResponseEntity(
+                new CommonApiResponse<CreateMemberResponse>(StatusCode.OK,
+                        ResponseMessage.CREATED_USER),
+                HttpStatus.OK);
     }
 
     //회원조회(전체)
     @GetMapping("")
-    public WrapResult listMember(){
-        List<Member> members = memberService.findMembers();
-        List<AllMembersFindListResponse> collect = members.stream()
-                .map(m -> new AllMembersFindListResponse(m.getId(), m.getUserId(), m.getNickname(), m.getName()))
-                .collect(Collectors.toList());
-
-        return new WrapResult(collect);
+    public ResponseEntity listMember(){
+        List<AllMembersFindListResponse> collect = memberService.findMembers();
+        return new ResponseEntity(
+                new CommonApiResponse<List>(StatusCode.OK,
+                        ResponseMessage.READ_USER,collect),
+                HttpStatus.OK);
 
     }
 
@@ -55,21 +62,27 @@ public class MemberApiController {
 
     //회원수정
     @PutMapping("/{id}")
-    public UpdateMemberResponse updateMember(
+    public ResponseEntity updateMember(
             @PathVariable("id") Long id,
             @RequestBody @Valid MemberDTO memberDTO){
 
         memberService.changeMemberInfo(memberDTO, id);
         Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
-        return new UpdateMemberResponse(member.getId(), member.getUserId(), member.getName());
+        return new ResponseEntity(
+                new CommonApiResponse<>(StatusCode.OK,
+                        ResponseMessage.UPDATE_USER),
+                HttpStatus.OK);
     }
 
     //회원삭제
     @DeleteMapping("/{id}")
-    public DeleteMemberResponse deleteMember(@PathVariable("id") Long id){
+    public ResponseEntity deleteMember(@PathVariable("id") Long id){
         Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
         memberService.deleteMember(member);
-        return new DeleteMemberResponse(member.getId(), member.getUserId(), member.getName());
+        return new ResponseEntity(
+                new CommonApiResponse<>(StatusCode.OK,
+                        ResponseMessage.DELETE_USER),
+                HttpStatus.OK);
     }
 
 

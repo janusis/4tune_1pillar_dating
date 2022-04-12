@@ -1,6 +1,7 @@
 package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
+import sajudating.jpadating.apiDto.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.MemberDTO;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -52,8 +54,13 @@ public class MemberService {
     /*
      *전체회원 조회
      */
-    public List<Member> findMembers(){
-        return memberRepository.findAll();
+    public List<AllMembersFindListResponse> findMembers(){
+
+
+        List<Member> members = memberRepository.findAll();
+        return members.stream()
+                .map(m -> new AllMembersFindListResponse(m.getId(), m.getUserId(), m.getNickname(), m.getName()))
+                .collect(Collectors.toList());
     }
 
     /*

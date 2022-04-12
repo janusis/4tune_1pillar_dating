@@ -3,6 +3,7 @@ package sajudating.jpadating.repository;
 
 import org.springframework.stereotype.Repository;
 import sajudating.jpadating.domain.Address;
+import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domain.SajuCalender;
 import sajudating.jpadating.domainDto.MemberDTO;
@@ -116,10 +117,16 @@ public class MemberRepository {
         return member.getId();
 
     }
-
+    //보드 완성 되고 수정해야함
     //멤버 삭제
     public Long delete(Member member){
         Member member1 = em.find(Member.class, member.getId());
+        List<Board> result = em.createQuery("select b from Board b where b.memberId = :memberId ", Board.class)
+                .setParameter("memberId", member.getId())
+                .getResultList();
+        for (Board board : result) {
+
+        }
         em.remove(member1);
         return member.getId();
     }

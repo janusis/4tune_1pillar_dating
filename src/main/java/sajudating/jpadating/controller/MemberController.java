@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import sajudating.jpadating.apiDto.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.service.MemberService;
@@ -43,7 +44,7 @@ public class MemberController {
     //모든 멤버 조회
     @GetMapping("/members")
     public String list(Model model){
-        List<Member> members = memberService.findMembers();
+        List<AllMembersFindListResponse> members = memberService.findMembers();
         model.addAttribute("members",members);
         return "members/memberList";
     }

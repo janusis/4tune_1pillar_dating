@@ -35,7 +35,6 @@ public class MemberDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
     private String birthTime;
-    @NotBlank
     private String nickname;
     private String dayPillar;
     @Enumerated(EnumType.STRING)

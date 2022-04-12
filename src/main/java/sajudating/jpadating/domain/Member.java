@@ -134,9 +134,6 @@ public class Member {
     }
 
     public Long updateMember(MemberDTO memberDTO){
-        if(memberDTO.getUserId()!=null){
-            throw new IllegalStateException("아이디는 변경할 수 없습니다.");
-        }
         changePw(memberDTO.getPw());
         changeName(memberDTO.getName());
         changeEmail(memberDTO.getEmail());
@@ -154,6 +151,7 @@ public class Member {
         changeModifiedDate(LocalDateTime.now());
         return this.getId();
     }
+
 
 
 

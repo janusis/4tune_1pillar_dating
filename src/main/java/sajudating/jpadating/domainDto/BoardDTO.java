@@ -2,10 +2,7 @@ package sajudating.jpadating.domainDto;
 
 
 import com.mysql.cj.jdbc.Clob;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import sajudating.jpadating.domain.BoardType;
 import sajudating.jpadating.domain.Images;
 import sajudating.jpadating.domain.Member;
@@ -18,8 +15,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@RequiredArgsConstructor
+@Data
 public class BoardDTO {
 
 
@@ -48,4 +44,21 @@ public class BoardDTO {
     private List<ReportBoard> reportBoardList= new ArrayList<>();
 
     private Long reportConut;
+
+
+    public BoardDTO(Long id,String title, Member member, LocalDateTime pubTime,
+                    LocalDateTime modTime, Clob context, Long views, Long good,
+                    Long bad, BoardType boardType, Long reportConut) {
+        this.title= title;
+        this.member=member;
+        this.pubTime=pubTime;
+        this.modTime=modTime;
+        this.context=context;
+        this.views=views;
+        this.good=good;
+        this.bad = bad;
+        this.boardType=boardType;
+        this.reportConut=reportConut;
+
+    }
 }
