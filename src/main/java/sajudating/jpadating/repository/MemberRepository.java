@@ -117,15 +117,15 @@ public class MemberRepository {
         return member.getId();
 
     }
-    //보드 완성 되고 수정해야함
+
     //멤버 삭제
     public Long delete(Member member){
         Member member1 = em.find(Member.class, member.getId());
-        List<Board> result = em.createQuery("select b from Board b where b.memberId = :memberId ", Board.class)
-                .setParameter("memberId", member.getId())
+        List<Board> result = em.createQuery("select b from Board b where b.member = :member ", Board.class)
+                .setParameter("member", member1)
                 .getResultList();
         for (Board board : result) {
-
+            board.deleteBoard();
         }
         em.remove(member1);
         return member.getId();

@@ -35,9 +35,7 @@ public class MemberService {
 
         LocalDateTime regDate = LocalDateTime.now();
 
-        Member member = new Member(memberDTO.getUserId(), memberDTO.getPw(), memberDTO.getName(), memberDTO.getEmail(),
-                memberDTO.getPhone(), memberDTO.getBirthday(), memberDTO.getBirthTime(), dayWords,memberDTO.getNickname(),
-                memberDTO.getGender(), homeAddress,companyAddress, regDate , regDate );
+        Member member = new Member(memberDTO);
 
         return memberRepository.save(member);
     }

@@ -3,32 +3,38 @@ package sajudating.jpadating.domainDto;
 
 import com.mysql.cj.jdbc.Clob;
 import lombok.*;
-import sajudating.jpadating.domain.BoardType;
-import sajudating.jpadating.domain.Images;
-import sajudating.jpadating.domain.Member;
-import sajudating.jpadating.domain.ReportBoard;
+import sajudating.jpadating.domain.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Getter
 @Setter
 @Data
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class BoardDTO {
 
 
+    private Long id;
     private Long rowNum;
+    @NotEmpty
     private String title;
 
-    private Member member;
+    //member 필드 내용
+    private Long memberId;
+    private String memberNickName;
+
+//    private Member member;
 
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
 
     @Lob
-    private Clob context;
+    @NotEmpty
+    private String context;
 
     private Long views;
     private Long good;
@@ -38,27 +44,27 @@ public class BoardDTO {
     private BoardType boardType;
 
 
-    private List<Images> imagesBoardList= new ArrayList<>();
+//    private List<Images> imagesBoardList= new ArrayList<>();
+//
+//
+//    private List<ReportBoard> reportBoardList= new ArrayList<>();
+
+    private Long reportCount;
 
 
-    private List<ReportBoard> reportBoardList= new ArrayList<>();
+    public BoardDTO(Board board){
 
-    private Long reportConut;
-
-
-    public BoardDTO(Long id,String title, Member member, LocalDateTime pubTime,
-                    LocalDateTime modTime, Clob context, Long views, Long good,
-                    Long bad, BoardType boardType, Long reportConut) {
-        this.title= title;
-        this.member=member;
-        this.pubTime=pubTime;
-        this.modTime=modTime;
-        this.context=context;
-        this.views=views;
-        this.good=good;
-        this.bad = bad;
-        this.boardType=boardType;
-        this.reportConut=reportConut;
-
+        this.id=board.getId();
+        this.title = board.getTitle();
+        this.memberId = board.getMember().getId();
+        this.memberNickName=board.getMember().getNickname();
+        this.pubTime = board.getPubTime();
+        this.modTime = board.getModTime();
+        this.context = board.getContext();
+        this.views = board.getViews();
+        this.good = board.getGood();
+        this.bad = board.getBad();
+        this.boardType = board.getBoardType();
+        this.reportCount = board.getReportCount();
     }
 }

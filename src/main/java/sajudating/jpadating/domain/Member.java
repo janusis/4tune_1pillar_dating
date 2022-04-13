@@ -58,33 +58,35 @@ public class Member {
     private LocalDateTime regDate;
     private LocalDateTime modifiedDate;
 
-    @OneToMany(mappedBy = "member")
-    private List<Images> imagesList=new ArrayList<>();
+//    @OneToMany(mappedBy = "member")
+//    private List<Images> imagesList=new ArrayList<>();
+//
+//
+//    @OneToMany(mappedBy = "member")
+//    private List<Board> boardList= new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "member")
-    private List<Board> boardList= new ArrayList<>();
-
-
+    public Member(Long id){
+        this.id=id;
+    }
 
     @Builder
-    public Member(String userId, String pw, String name, String email, String phone, LocalDate birthday, String birthTime,
-                  String dayPillar, String nickname,
-                  Gender gender, Address homeAddress, Address companyAddress,
-                  LocalDateTime regDate, LocalDateTime modifiedDate) {
-        this.userId=userId;
-        this.pw = pw;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.birthTime = birthTime;
-        this.nickname = nickname;
-        this.gender = gender;
-        this.homeAddress = homeAddress;
-        this.companyAddress = companyAddress;
-        this.regDate = regDate;
-        this.modifiedDate = modifiedDate;
+    public Member(MemberDTO memberDto) {
+        this.userId=memberDto.getUserId();
+        this.pw = memberDto.getPw();
+        this.name = memberDto.getName();
+        this.email = memberDto.getEmail();
+        this.phone = memberDto.getPhone();
+        this.birthday = memberDto.getBirthday();
+        this.birthTime = memberDto.getBirthTime();
+        this.nickname = memberDto.getNickname();
+        this.gender = memberDto.getGender();
+        this.homeAddress = new Address(memberDto.getHomeLotNumAddress(),memberDto.getHomeRoadNameAddress(),
+                memberDto.getHomeDetail_address(),memberDto.getHomeZipcode());
+        this.companyAddress = new Address(memberDto.getCompanyLotNumAddress(),memberDto.getHomeRoadNameAddress(),
+                memberDto.getHomeDetail_address(),memberDto.getHomeZipcode());
+        this.regDate = LocalDateTime.now();
+        this.modifiedDate = LocalDateTime.now();
     }
 
 

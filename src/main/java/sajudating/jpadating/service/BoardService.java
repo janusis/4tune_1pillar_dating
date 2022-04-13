@@ -1,30 +1,43 @@
 package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
 import sajudating.jpadating.repository.BoardRepository;
+import sajudating.jpadating.repository.MemberRepository;
 
-import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
     private final BoardRepository boardRepository ;
+    private final MemberRepository memberRepository;
 
-    public BoardService(BoardRepository boardRepository) {
+    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository) {
+
         this.boardRepository = boardRepository;
+        this.memberRepository= memberRepository;
     }
 
 
     //게시글 저장
-    @Transactional
-    public Long write(BoardDTO boardDTO) {
-        Board board = new Board(boardDTO.getTitle(), boardDTO.getMember(), boardDTO.getPubTime(), boardDTO.getModTime(),
+    @Transactional(readOnly = false)
+    public Long write(@NotNull BoardDTO boardDTO) {
+        Member member = memberRepository.findById(boardDTO.getMemberId()).orElseThrow();
+
+        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getModTime(),
                 boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
-                boardDTO.getReportConut()
+                boardDTO.getReportCount()
         );
+//        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getModTime(),
+//                boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
+//                boardDTO.getReportCount()
+//        );
+//        Board board = new Board(boardDTO);
         boardRepository.save(board);
         return board.getId();
     }
@@ -33,17 +46,7 @@ public class BoardService {
     public List<BoardDTO> findBoards(){
         List<Board> boards = boardRepository.findAll();
         return boards.stream()
-                .map(b -> new BoardDTO(b.getId(),
-                        b.getTitle(),
-                        b.getMember(),
-                        b.getPubTime(),
-                        b.getModTime(),
-                        b.getContext(),
-                        b.getViews(),
-                        b.getGood(),
-                        b.getBad(),
-                        b.getBoardType(),
-                        b.getReportConut()))
+                .map(BoardDTO::new)
                 .collect(Collectors.toList());
 
     }
