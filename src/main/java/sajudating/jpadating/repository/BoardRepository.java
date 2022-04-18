@@ -55,5 +55,11 @@ public class BoardRepository {
     }
     //게시글 삭제
 
+    public Long delete(Long boardId){
+        Board board = em.find(Board.class, boardId);
+        em.remove(board);
+        return boardId;
+    }
+
 
 }

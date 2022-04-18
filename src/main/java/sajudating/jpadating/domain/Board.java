@@ -107,8 +107,11 @@ public class Board {
         changeContext(boardDTO.getContext());
         changeBoardType(boardDTO.getBoardType());
     }
+
     public void deleteBoard(){
+
         changeMemberNull();
+
     }
 
 

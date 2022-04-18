@@ -26,18 +26,13 @@ public class BoardService {
 
     //게시글 저장
     @Transactional(readOnly = false)
-    public Long write(@NotNull BoardDTO boardDTO) {
+    public Long writeBoard(@NotNull BoardDTO boardDTO) {
         Member member = memberRepository.findById(boardDTO.getMemberId()).orElseThrow();
 
-        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getModTime(),
+        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getPubTime(),
                 boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
-                boardDTO.getReportCount()
+                0L
         );
-//        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getModTime(),
-//                boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
-//                boardDTO.getReportCount()
-//        );
-//        Board board = new Board(boardDTO);
         boardRepository.save(board);
         return board.getId();
     }
@@ -53,12 +48,16 @@ public class BoardService {
 
     //게시글 수정
     @Transactional
-    public Long changeBoardInfo(BoardDTO boardDTO){
+    public Long changeBoard(BoardDTO boardDTO){
         Board board = boardRepository.findByMemberIdAndPubTime(boardDTO);
         board.updateBoard(boardDTO);
         return boardRepository.change(board);
     }
 
     //게시글 삭제
-
+    @Transactional
+    public Long deleteBoard(Long boardId){
+        boardRepository.delete(boardId);
+        return boardId;
+    }
 }
