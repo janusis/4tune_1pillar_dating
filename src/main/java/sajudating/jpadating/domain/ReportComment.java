@@ -10,7 +10,7 @@ import javax.persistence.*;
 @RequiredArgsConstructor
 public class ReportComment {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_comment_id")
     private Long id;
 
@@ -19,12 +19,12 @@ public class ReportComment {
     private Long commentId;
 
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "report_member_member_id")
     private Member reportMember;
 
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
-    @JoinColumn
-    private Long reportedMember;
+    @JoinColumn(name = "reported_member_member_id")
+    private Member reportedMember;
 
     private String reportContext;
 

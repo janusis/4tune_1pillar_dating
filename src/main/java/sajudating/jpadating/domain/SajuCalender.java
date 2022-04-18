@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 public class SajuCalender {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer year;

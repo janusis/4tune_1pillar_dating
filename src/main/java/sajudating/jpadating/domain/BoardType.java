@@ -1,5 +1,5 @@
 package sajudating.jpadating.domain;
 
 public enum BoardType {
-    FREE,ETC
+    자유게시판,기타
 }

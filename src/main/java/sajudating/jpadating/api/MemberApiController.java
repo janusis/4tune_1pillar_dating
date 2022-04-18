@@ -15,7 +15,6 @@ import sajudating.jpadating.service.MemberService;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,7 +25,7 @@ public class MemberApiController {
 
     //회원가입
     @PostMapping("")
-    public ResponseEntity saveMember1(@RequestBody @Valid MemberDTO memberDTO){
+    public ResponseEntity saveMember(@RequestBody @Valid MemberDTO memberDTO){
         Long id = memberService.join(memberDTO);
 //        String userId = memberDTO.getUserId();
 //        String name = memberDTO.getName();

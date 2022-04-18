@@ -11,21 +11,21 @@ import javax.persistence.*;
 public class ReportBoard {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_board_id")
     private Long id;
 
     @ManyToOne(targetEntity = Board.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
-    private Long boardId;
+    private Board board;
 
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
-    @JoinColumn
-    private Long reportMember;
+    @JoinColumn(name = "report_member_member_id")
+    private Member reportMember;
 
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
-    @JoinColumn
-    private Long reportedMember;
+    @JoinColumn(name ="reported_member_member_id")
+    private Member reportedMember;
 
     private String reportContext;
 }

@@ -11,7 +11,7 @@ import java.sql.Clob;
 @RequiredArgsConstructor
 @Getter
 public class Images {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "images_id")
     private Long id;
 
@@ -26,7 +26,7 @@ public class Images {
 
     @Lob
     @Column(name = "image")
-    private Blob image;
+    private String image;
 
 
 

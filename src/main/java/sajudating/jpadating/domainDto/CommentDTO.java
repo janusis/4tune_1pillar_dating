@@ -20,11 +20,13 @@ public class CommentDTO {
     private Long boardId;
 
     //그룹
+    private Long groupNum;
+    //뎁스
     private Long hierarchy;
 
-
+    //정렬
     private Long orders;
-    private Long groupNum;
+
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
     private Long good;
