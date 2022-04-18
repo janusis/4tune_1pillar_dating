@@ -2,10 +2,7 @@ package sajudating.jpadating.repository;
 
 
 import org.springframework.stereotype.Repository;
-import sajudating.jpadating.domain.Address;
-import sajudating.jpadating.domain.Board;
-import sajudating.jpadating.domain.Member;
-import sajudating.jpadating.domain.SajuCalender;
+import sajudating.jpadating.domain.*;
 import sajudating.jpadating.domainDto.MemberDTO;
 
 import javax.persistence.EntityManager;
@@ -121,12 +118,22 @@ public class MemberRepository {
     //멤버 삭제
     public Long delete(Member member){
         Member member1 = em.find(Member.class, member.getId());
-        List<Board> result = em.createQuery("select b from Board b where b.member = :member ", Board.class)
+        //코멘트의 해당 memberId를 null로 변경
+        List<Comment> comment = em.createQuery("select c from Comment c where c.member = :member ", Comment.class)
                 .setParameter("member", member1)
                 .getResultList();
-        for (Board board : result) {
-            board.deleteBoard();
+        for (Comment c : comment){
+            c.deleteComment();
         }
+
+        // 게시글의 해당 memberId를 null로 변경
+        List<Board> board = em.createQuery("select b from Board b where b.member = :member ", Board.class)
+                .setParameter("member", member1)
+                .getResultList();
+        for (Board b : board) {
+            b.deleteBoard();
+        };
+
         em.remove(member1);
         return member.getId();
     }

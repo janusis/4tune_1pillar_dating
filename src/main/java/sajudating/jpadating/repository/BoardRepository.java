@@ -33,7 +33,7 @@ public class BoardRepository {
     //게시글 전체 조회
 
     public List<Board> findAll(){
-        return em.createQuery("select b from Board b where b.member != null", Board.class).
+        return em.createQuery("select b from Board b where b.member != null order by b.id ", Board.class).
                 getResultList();
     }
 
