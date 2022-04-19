@@ -2,6 +2,7 @@ package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sajudating.jpadating.domainDto.CommentDTO;
 import sajudating.jpadating.repository.BoardRepository;
 import sajudating.jpadating.repository.CommentRepository;
 import sajudating.jpadating.repository.MemberRepository;
@@ -25,6 +26,15 @@ public class CommentService {
 
     //코멘트 저장
 
+    public Long writeComment(CommentDTO commentDTO){
+        if(commentDTO.getGroupNum()==null){
+            Long groupNum = commentRepository.getGroupNumMax();
+            commentDTO.setGroupNum(groupNum);
+        }else{
+
+        }
+        return 0L;
+    }
 
 
     //게시글 별 코멘트 조회

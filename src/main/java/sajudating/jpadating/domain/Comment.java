@@ -29,6 +29,10 @@ public class Comment {
     private Board board;
 
 
+    //댓글 출력하는 법
+    //1. 그룹 별로 나누기
+    //2. 0 뎁스부터 출력 그리고 0뎁스와 관련된 1뎁스가 있으면 출력
+
     //그룹 그룹으로 묶기
     private Long groupNum;
     //뎁스 -> 깊이
