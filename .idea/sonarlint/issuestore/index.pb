@@ -15,13 +15,13 @@ r
 Bsrc/main/java/sajudating/jpadating/repository/BoardRepository.java,5\b\5b1aeefce818273d9631381b9975fd4e585967e4
 s
 Csrc/main/java/sajudating/jpadating/repository/MemberRepository.java,f\a\fae77779af9ca95426a544fc255340b86353f90c
-f
-6src/main/java/sajudating/jpadating/domain/Comment.java,c\f\cf89eca1ef6dd5a76fd2ccf2903da615d131b0c9
-t
-Dsrc/main/java/sajudating/jpadating/repository/CommentRepository.java,d\4\d46d31d8a880fef8019d72e84f2f10ef7992dd7c
 n
 >src/main/java/sajudating/jpadating/service/CommentService.java,8\9\89cadef0d847c6269aa0309a6833714860313676
 w
 Gsrc/main/java/sajudating/jpadating/apiDto/common/CommonApiResponse.java,b\b\bb369d400f4d39001e978c609dbd054f0b741958
 p
 @src/main/java/sajudating/jpadating/api/CommentApiController.java,e\f\ef5e312976ed14b44242df7d68273a13f6243feb
+t
+Dsrc/main/java/sajudating/jpadating/repository/CommentRepository.java,d\4\d46d31d8a880fef8019d72e84f2f10ef7992dd7c
+f
+6src/main/java/sajudating/jpadating/domain/Comment.java,c\f\cf89eca1ef6dd5a76fd2ccf2903da615d131b0c9
