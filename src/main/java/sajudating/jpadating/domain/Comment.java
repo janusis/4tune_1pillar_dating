@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class Comment {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "comment_id")
     private Long id;
 
@@ -28,17 +28,16 @@ public class Comment {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    @Enumerated(value = EnumType.STRING)
+    private DeleteStatus isDeleted;
 
-    //댓글 출력하는 법
-    //1. 그룹 별로 나누기
-    //2. 0 뎁스부터 출력 그리고 0뎁스와 관련된 1뎁스가 있으면 출력
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Comment parent;
 
-    //그룹 그룹으로 묶기
-    private Long groupNum;
-    //뎁스 -> 깊이
-    private Long hierarchy;
-    //내림차순 정렬 (pubTime 으로 내림차순)
-    private Long orders;
+    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    private List<Comment> children = new ArrayList<>();
+
 
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
@@ -51,14 +50,29 @@ public class Comment {
 
     private Long reportCount;
 
-    private void changeCommentNull(){
+
+    public Comment(String context, Member member, Board board, DeleteStatus isDeleted, Comment parent,
+                   LocalDateTime pubTime, LocalDateTime modTime, Long good, Long bad, Long reportCount) {
+        this.context = context;
+        this.member = member;
+        this.board = board;
+        this.isDeleted = isDeleted;
+        this.parent = parent;
+        this.pubTime = pubTime;
+        this.modTime = modTime;
+        this.good = good;
+        this.bad = bad;
+        this.reportCount = reportCount;
+    }
+
+    private void changeCommentMemberNull(){
         if(member!=null){
             this.member=null;
         }
     }
 
-    public void deleteComment(){
-        changeCommentNull();
+    public void deleteCommentMember(){
+        changeCommentMemberNull();
     }
 
 }

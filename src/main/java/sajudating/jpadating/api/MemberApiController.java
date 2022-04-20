@@ -66,7 +66,7 @@ public class MemberApiController {
             @RequestBody @Valid MemberDTO memberDTO){
 
         memberService.changeMemberInfo(memberDTO, id);
-        Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
+        Member member = memberService.findMember(id);
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,
                         ResponseMessage.UPDATE_USER),
@@ -76,7 +76,7 @@ public class MemberApiController {
     //회원삭제
     @DeleteMapping("/{id}")
     public ResponseEntity deleteMember(@PathVariable("id") Long id){
-        Member member = memberService.findMember(id).orElseThrow(NoSuchElementException::new);
+        Member member = memberService.findMember(id);
         memberService.deleteMember(member);
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,

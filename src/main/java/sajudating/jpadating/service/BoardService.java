@@ -27,7 +27,7 @@ public class BoardService {
     //게시글 저장
     @Transactional(readOnly = false)
     public Long writeBoard(@NotNull BoardDTO boardDTO) {
-        Member member = memberRepository.findById(boardDTO.getMemberId()).orElseThrow();
+        Member member = memberRepository.findById(boardDTO.getMemberId());
 
         Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getPubTime(),
                 boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),

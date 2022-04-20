@@ -51,9 +51,9 @@ public class MemberRepository {
     }
 
     //pk로 멤버 조회
-    public Optional<Member> findById(Long id ){
+    public Member findById(Long id ){
         Member member = em.find(Member.class, id);
-        return Optional.ofNullable(member) ;
+        return Optional.ofNullable(member).orElseThrow(NoSuchElementException::new) ;
     }
 
     //유저아이디로 멤버 조회
@@ -123,7 +123,7 @@ public class MemberRepository {
                 .setParameter("member", member1)
                 .getResultList();
         for (Comment c : comment){
-            c.deleteComment();
+            c.deleteCommentMember();
         }
 
         // 게시글의 해당 memberId를 null로 변경
@@ -132,7 +132,7 @@ public class MemberRepository {
                 .getResultList();
         for (Board b : board) {
             b.deleteBoard();
-        };
+        }
 
         em.remove(member1);
         return member.getId();

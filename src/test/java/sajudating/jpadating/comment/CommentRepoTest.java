@@ -15,15 +15,5 @@ public class CommentRepoTest {
     @Autowired
     private CommentRepository commentRepository;
 
-    @Test
-    public void 맥스값테스트(){
-        //given
-        Long groupNum = commentRepository.getGroupNumMax();
-
-        //when
-
-        //then
-        Assertions.assertThat(groupNum).isEqualTo(0);
-    }
 
 }

@@ -1,11 +1,9 @@
 package sajudating.jpadating.repository;
 
 import org.springframework.stereotype.Repository;
-import sajudating.jpadating.apiDto.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
-import sajudating.jpadating.domainDto.MemberDTO;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -20,10 +18,13 @@ public class BoardRepository {
     public BoardRepository(EntityManager em) {
         this.em = em;
     }
-    //회원 찾기
-    public Member findMember(Long memberId){
-        return em.find(Member.class, memberId);
+
+    //pk로 게시글 찾기
+    public Board findById(Long boardId){
+        Board board = em.find(Board.class, boardId);
+        return Optional.ofNullable(board).orElseThrow(NoSuchElementException::new);
     }
+
 
     //게시글 저장
     public Long save(Board board) {

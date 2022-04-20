@@ -14,5 +14,9 @@ public class ResponseMessage {
     public static final String CREATE_BOARD = "게시글 저장 성공";
     public static final String UPDATE_BOARD = "게시글 수정 성공";
     public static final String DELETE_BOARD = "게시글 삭제 성공";
+    public static final String READ_COMMENT = "댓글 조회 성공";
+    public static final String CREATE_COMMENT = "댓글 저장 성공";
+    public static final String UPDATE_COMMENT = "댓글 수정 성공";
+    public static final String DELETE_COMMENT = "댓글 삭제 성공";
 
 }

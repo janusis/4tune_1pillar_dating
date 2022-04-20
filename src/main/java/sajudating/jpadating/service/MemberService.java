@@ -64,8 +64,9 @@ public class MemberService {
     /*
     pk를 이용해서 멤버 조회
      */
-    public Optional<Member> findMember(Long id){
-        return memberRepository.findById(id);
+    public Member findMember(Long id){
+        Member member = memberRepository.findById(id);
+        return Optional.ofNullable(member).orElseThrow(NoSuchElementException::new);
     }
 
     /*
@@ -95,8 +96,7 @@ public class MemberService {
     회원정보 수정
      */
     public Long changeMemberInfo(MemberDTO memberDTO, Long id) {
-        Optional<Member> optionalMember = findMember(id);
-        Member member = optionalMember.orElseThrow(NoSuchElementException::new);
+        Member member = findMember(id);
         member.updateMember(memberDTO);
         return memberRepository.change(member);
     }
