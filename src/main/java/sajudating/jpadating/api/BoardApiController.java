@@ -26,8 +26,7 @@ public class BoardApiController {
     @PostMapping("")
     public ResponseEntity saveBoard(@RequestBody @Valid BoardDTO boardDTO){
         Long id = boardService.writeBoard(boardDTO);
-//        String title = boardDTO.getTitle();
-//        String name = boardDTO.getMember().getName();
+
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,
                         ResponseMessage.CREATE_BOARD),
@@ -41,7 +40,17 @@ public class BoardApiController {
                 new CommonApiResponse<List>(StatusCode.OK,
                         ResponseMessage.READ_BOARD,boards),
                 HttpStatus.OK);
+    }
 
+    //게시글 단건 조회
+    @GetMapping("/{id}")
+    public ResponseEntity readBoard(
+            @PathVariable("id") Long id) {
+        BoardDTO board = boardService.findBoard(id);
+        return new ResponseEntity(
+                new CommonApiResponse<BoardDTO>(StatusCode.OK,
+                        ResponseMessage.READ_BOARD,board),
+                HttpStatus.OK);
     }
 
     //게시물 수정
@@ -50,7 +59,7 @@ public class BoardApiController {
             @PathVariable("id") Long id,
             @RequestBody @Valid BoardDTO boardDTO){
 
-        boardService.changeBoard(boardDTO);
+        boardService.changeBoard(id,boardDTO);
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,
                         ResponseMessage.UPDATE_BOARD),

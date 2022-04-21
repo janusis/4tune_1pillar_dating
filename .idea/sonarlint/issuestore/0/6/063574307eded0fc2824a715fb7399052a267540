@@ -1,32 +1,16 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î˜¦Ÿÿÿÿÿÿ
-}
-java:S4165K"bRemove this useless assignment; "good" already holds the assigned value along all execution paths.(“Ûİ÷ûÿÿÿÿ
-„
-java:S4165M"iRemove this useless assignment; "reportCount" already holds the assigned value along all execution paths.(ä©‘úşÿÿÿÿ
-w
-java:S4165L"aRemove this useless assignment; "bad" already holds the assigned value along all execution paths.(İÓ®»
-€
-java:S4165J"eRemove this useless assignment; "modTime" already holds the assigned value along all execution paths.(€…‹Âıÿÿÿÿ
-{
-java:S4165I"eRemove this useless assignment; "pubTime" already holds the assigned value along all execution paths.(ˆü¿ÿ
+V	java:S125'"<This block of commented-out lines of code should be removed.(ºÒ¬ğüÿÿÿÿ
 B
-java:S1602B",Remove useless curly braces around statement(‘ º
-J
-java:S1656J"/Remove or correct this useless self-assignment.(€…‹Âıÿÿÿÿ
-E
-java:S1656L"/Remove or correct this useless self-assignment.(İÓ®»
-E
-java:S1656I"/Remove or correct this useless self-assignment.(ˆü¿ÿ
-J
-java:S1656K"/Remove or correct this useless self-assignment.(“Ûİ÷ûÿÿÿÿ
-J
-java:S1656M"/Remove or correct this useless self-assignment.(ä©‘úşÿÿÿÿ
+java:S1602C",Remove useless curly braces around statement(‘ º
+V	java:S125E"<This block of commented-out lines of code should be removed.(ìÈàÚÿÿÿÿÿ
 @
 java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ
 Y
 java:S1128">Remove this unused import 'sajudating.jpadating.domain.Board'.(ãÃº®şÿÿÿÿ
 Z
 java:S1128"?Remove this unused import 'sajudating.jpadating.domain.Member'.(ùï²¢ùÿÿÿÿ
-d
-java:S1128"BRemove this unused import 'javax.validation.constraints.NotBlank'.(µã‡ıÿÿÿÿ8ô‚­³„0
+]
+java:S1128"BRemove this unused import 'javax.validation.constraints.NotBlank'.(µã‡ıÿÿÿÿ
+c
+java:S1128"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8âàÚÛ„0

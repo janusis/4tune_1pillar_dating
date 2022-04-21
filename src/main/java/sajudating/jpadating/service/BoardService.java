@@ -9,6 +9,7 @@ import sajudating.jpadating.repository.BoardRepository;
 import sajudating.jpadating.repository.MemberRepository;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +28,11 @@ public class BoardService {
     //게시글 저장
     @Transactional(readOnly = false)
     public Long writeBoard(@NotNull BoardDTO boardDTO) {
-        Member member = memberRepository.findById(boardDTO.getMemberId());
 
-        Board board = new Board(boardDTO.getTitle(), member, boardDTO.getPubTime(), boardDTO.getPubTime(),
+        Member member = memberRepository.findById(boardDTO.getMemberId());
+        //게시글 번호 넘버링
+        Long maxRowNum = boardRepository.findMaxRowNum();
+        Board board = new Board(maxRowNum, boardDTO.getTitle(), member, LocalDateTime.now(), LocalDateTime.now(),
                 boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
                 0L
         );
@@ -43,13 +46,20 @@ public class BoardService {
         return boards.stream()
                 .map(BoardDTO::new)
                 .collect(Collectors.toList());
+    }
 
+    //게시글 단건 조회
+    @Transactional
+    public BoardDTO findBoard(Long id){
+        Board board = boardRepository.findById(id);
+        return new BoardDTO(board);
     }
 
     //게시글 수정
     @Transactional
-    public Long changeBoard(BoardDTO boardDTO){
-        Board board = boardRepository.findByMemberIdAndPubTime(boardDTO);
+    public Long changeBoard(Long id,BoardDTO boardDTO){
+//        Board board = boardRepository.findByMemberIdAndPubTime(boardDTO);
+        Board board = boardRepository.findById(id);
         board.updateBoard(boardDTO);
         return boardRepository.change(board);
     }
@@ -60,4 +70,6 @@ public class BoardService {
         boardRepository.delete(boardId);
         return boardId;
     }
+
+
 }

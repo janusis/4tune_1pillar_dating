@@ -21,12 +21,11 @@ public class CommentDTO {
     private String context;
 
     //member 에서 가져오는 것들
-    @NotNull
     private Long memberId;
     private String memberNickname;
 
+
     //board 에서 가져오는 것들
-    @NotNull
     private Long boardId;
 
     @Enumerated(value = EnumType.STRING)
@@ -35,7 +34,9 @@ public class CommentDTO {
 
     private Long parentId;
 
-    private List<Long> children = new ArrayList<>();
+    private List<CommentDTO> children = new ArrayList<>();
+
+//    private List<Comment> children = new ArrayList<>();
 
     private LocalDateTime pubTime;
     private LocalDateTime modTime;
@@ -64,17 +65,18 @@ public class CommentDTO {
             comment.getChildren().
                     stream().
                     forEach(c->{
-                        this.children.add(c.getId());
+                        this.children.add(new CommentDTO(c));
+//                        this.children.add(c);
                     });
         }else{
             this.children = new ArrayList<>();
         }
 
-        this.pubTime = pubTime;
-        this.modTime = modTime;
-        this.good = good;
-        this.bad = bad;
-        this.reportCount = reportCount;
+        this.pubTime = comment.getPubTime();
+        this.modTime = comment.getModTime();
+        this.good = comment.getGood();
+        this.bad = comment.getBad();
+        this.reportCount = comment.getReportCount();
     }
 
 

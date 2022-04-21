@@ -6,6 +6,7 @@ import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -25,6 +26,15 @@ public class BoardRepository {
         return Optional.ofNullable(board).orElseThrow(NoSuchElementException::new);
     }
 
+    // 최대 게시글 번호 가져와서 +1 해서 리턴
+    public Long findMaxRowNum(){
+        Object rowNum = em.createQuery("select max(b.rowNum) from Board b").getSingleResult();
+        if(rowNum!=null){
+            return (Long) rowNum+1;
+        }else{
+            return 0L;
+        }
+    }
 
     //게시글 저장
     public Long save(Board board) {

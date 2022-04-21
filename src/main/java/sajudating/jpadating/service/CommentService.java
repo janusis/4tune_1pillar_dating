@@ -6,6 +6,7 @@ import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Comment;
 import sajudating.jpadating.domain.DeleteStatus;
 import sajudating.jpadating.domain.Member;
+import sajudating.jpadating.domainDto.BoardDTO;
 import sajudating.jpadating.domainDto.CommentDTO;
 import sajudating.jpadating.repository.BoardRepository;
 import sajudating.jpadating.repository.CommentRepository;
@@ -46,46 +47,53 @@ public class CommentService {
             parent = commentRepository.findById(commentDTO.getParentId());
         else parent=null;
 
-        Comment comment = new Comment(commentDTO.getContext(),member,board, DeleteStatus.FALSE,parent,
-                LocalDateTime.now(),LocalDateTime.now(), 0L,0L,0L);
+        Comment comment = new Comment(commentDTO.getContext(),member, board, DeleteStatus.FALSE, parent,
+                LocalDateTime.now(), LocalDateTime.now(), 0L,0L,0L);
 
         Long id = commentRepository.save(comment);
 
-        Comment comment1 = commentRepository.findById(1L);
-        System.out.println("  ");
         return id;
     }
 
 
     //게시글 별 코멘트 조회
-
     //게시글정렬 해서 dto에 싹 담기
     public List<CommentDTO> findComments(Long boardId){
         //parentId 와 pubTime을 기준으로 order by 된 리스트
         List<Comment> commentList = commentRepository.findCommentsByBoardId(boardId);
+
         Map<Long, CommentDTO> map = new HashMap<>();
         List<CommentDTO> result=new ArrayList<>();
+
         commentList.stream().forEach(
                 c->{
                     CommentDTO dto = new CommentDTO(c);
-                    map.put(dto.getId(),dto);
-                    if(dto.getParentId()!=null) {
-//                        CommentDTO parentDTO = map.get(dto.getParentId());
-//                        parentDTO.getChildren().add(dto.getId());
-                    }else{
+                    if(dto.getParentId()==null)
                         result.add(dto);
-                    }
                 }
         );
 
         return result;
     }
 
-
+    // 코멘트 pk 이용한 코멘트 조회
+    public CommentDTO findComment(Long commentId){
+        Comment comment = commentRepository.findById(commentId);
+        return  new CommentDTO(comment);
+    }
 
     //코멘트 수정
 
-    //코멘트 삭제
+    public Long changeComment(Long id, CommentDTO commentDTO){
+        Comment comment = commentRepository.findById(id);
+        comment.updateComment(commentDTO);
+        return commentRepository.change(comment); //em.persist
+    }
 
+    //코멘트 삭제
+    public Long deleteComment(Long commentId){
+        commentRepository.delete(commentId);
+        return commentId;
+    }
 
 }

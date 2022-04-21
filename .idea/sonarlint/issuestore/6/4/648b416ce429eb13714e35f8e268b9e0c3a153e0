@@ -1,0 +1,9 @@
+
+\	java:S107<"BConstructor has 11 parameters, which is greater than 7 authorized.(Í™ãĞøÿÿÿÿ
+Q	java:S125-"<This block of commented-out lines of code should be removed.(ÅëÒ³
+E
+java:S1144]"/Remove this unused private "changeView" method.(ŒÒ¡
+E
+java:S1144a"/Remove this unused private "changeGood" method.(¢Õ“÷
+H
+java:S1144e"2Remove this unused private "changeContext" method.(¯Åë‹

@@ -2,6 +2,7 @@ package sajudating.jpadating.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import sajudating.jpadating.domainDto.CommentDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -65,6 +66,27 @@ public class Comment {
         this.reportCount = reportCount;
     }
 
+    public void changeContext(String context){
+        if( context != null)
+            this.context=context;
+    }
+
+    public void changeDeleteStatus(DeleteStatus isDeleted){
+        if( context != null)
+            this.isDeleted = isDeleted;
+    }
+
+    public void changeModTime(){
+        this.modTime = LocalDateTime.now();
+    }
+
+    public void updateComment(CommentDTO commentDTO){
+        changeContext(commentDTO.getContext());
+        changeModTime();
+//        changeDeleteStatus(commentDTO.getIsDeleted());
+    }
+
+
     private void changeCommentMemberNull(){
         if(member!=null){
             this.member=null;
@@ -74,5 +96,8 @@ public class Comment {
     public void deleteCommentMember(){
         changeCommentMemberNull();
     }
+
+
+
 
 }

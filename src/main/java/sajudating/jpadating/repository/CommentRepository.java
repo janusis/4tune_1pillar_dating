@@ -45,10 +45,21 @@ public class CommentRepository {
 
         return commentList;
     }
-    //
 
 
     //코멘트 수정
+    public Long change(Comment comment){
+        em.persist(comment);
+        return comment.getId();
+    }
+
 
     //코멘트 삭제
+
+    public Long delete(Long commentId){
+        Comment comment = em.find(Comment.class, commentId);
+        comment.changeContext("삭제된 댓글 입니다.");
+        em.persist(comment);
+        return commentId;
+    }
 }

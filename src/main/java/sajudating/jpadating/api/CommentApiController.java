@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import sajudating.jpadating.apiDto.common.CommonApiResponse;
 import sajudating.jpadating.apiDto.common.ResponseMessage;
 import sajudating.jpadating.apiDto.common.StatusCode;
+import sajudating.jpadating.domainDto.BoardDTO;
 import sajudating.jpadating.domainDto.CommentDTO;
 import sajudating.jpadating.service.CommentService;
 
@@ -39,7 +40,7 @@ public class CommentApiController {
     //게시글 별 코멘트 조회
 
     @GetMapping("/{id}")
-    public ResponseEntity updateMember(
+    public ResponseEntity listComment(
             @PathVariable("id") Long id){
 
         List<CommentDTO> comments = commentService.findComments(id);
@@ -49,9 +50,33 @@ public class CommentApiController {
                 HttpStatus.OK);
     }
 
+
     //코멘트 수정
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity updateComment(
+            @PathVariable("id") Long id,
+            @RequestBody @Valid CommentDTO commentDTO){
+
+        commentService.changeComment(id,commentDTO);
+        return new ResponseEntity(
+                new CommonApiResponse<>(StatusCode.OK,
+                        ResponseMessage.UPDATE_COMMENT),
+                HttpStatus.OK);
+    }
     //코멘트 삭제
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity DeleteComment(
+            @PathVariable("id") Long id){
+
+        commentService.deleteComment(id);
+        return new ResponseEntity(
+                new CommonApiResponse<>(StatusCode.OK,
+                        ResponseMessage.DELETE_COMMENT),
+                HttpStatus.OK);
+    }
 
 
 }

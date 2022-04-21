@@ -8,6 +8,8 @@ import sajudating.jpadating.domain.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -44,10 +46,14 @@ public class BoardDTO {
     private BoardType boardType;
 
 
+    private List<CommentDTO> comments = new ArrayList<>();
+
+
 //    private List<Images> imagesBoardList= new ArrayList<>();
 //
 //
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
+
 
     private Long reportCount;
 
@@ -55,6 +61,7 @@ public class BoardDTO {
     public BoardDTO(Board board){
 
         this.id=board.getId();
+        this.rowNum= board.getRowNum();
         this.title = board.getTitle();
         this.memberId = board.getMember().getId();
         this.memberNickName=board.getMember().getNickname();
@@ -65,6 +72,10 @@ public class BoardDTO {
         this.good = board.getGood();
         this.bad = board.getBad();
         this.boardType = board.getBoardType();
+        board.getComments().stream().forEach(c -> {
+            CommentDTO commentDTO = new CommentDTO(c);
+        this.comments.add(commentDTO);
+        });
         this.reportCount = board.getReportCount();
     }
 }

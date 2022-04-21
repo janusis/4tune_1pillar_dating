@@ -7,6 +7,8 @@ import sajudating.jpadating.domainDto.BoardDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -45,6 +47,9 @@ public class Board {
 //    @OneToMany(mappedBy = "boardId")
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
 
+    @OneToMany(mappedBy = "board")
+    private List<Comment> comments = new ArrayList<>();
+
     private Long reportCount;
 
     protected Board(){
@@ -52,9 +57,10 @@ public class Board {
     }
 
     @Builder
-    public Board(String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
+    public Board(Long rowNum, String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
                  String context, Long views, Long good, Long bad, BoardType boardType,
                   Long reportCount) {
+        this.rowNum =rowNum;
         this.title = title;
         this.member = member;
         this.pubTime = pubTime;
@@ -99,6 +105,10 @@ public class Board {
     private void changeBoardType(BoardType boardType){
         if(boardType!=null)
             this.boardType=boardType;
+    }
+
+    public void viewAdd(){
+        this.views++;
     }
 
     public void updateBoard(BoardDTO boardDTO){
