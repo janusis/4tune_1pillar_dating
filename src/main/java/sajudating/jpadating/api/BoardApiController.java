@@ -4,11 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.apiDto.common.CommonApiResponse;
 import sajudating.jpadating.apiDto.common.ResponseMessage;
 import sajudating.jpadating.apiDto.common.StatusCode;
+import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Image;
 import sajudating.jpadating.domainDto.BoardDTO;
+import sajudating.jpadating.domainDto.ImageDTO;
 import sajudating.jpadating.service.BoardService;
+import sajudating.jpadating.service.ImageService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -21,11 +26,15 @@ import java.util.List;
 public class BoardApiController {
 
     private final BoardService boardService;
+    private final ImageService imageService;
 
     //게시글 저장
     @PostMapping("")
-    public ResponseEntity saveBoard(@RequestBody @Valid BoardDTO boardDTO){
-        Long id = boardService.writeBoard(boardDTO);
+    public ResponseEntity saveBoard(@RequestBody @Valid BoardDTO boardDTO,
+                                   @RequestPart("image") List<MultipartFile> image){
+
+        Long id = boardService.writeBoard(boardDTO,image);
+
 
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,

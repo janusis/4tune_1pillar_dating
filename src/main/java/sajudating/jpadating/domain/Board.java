@@ -41,8 +41,8 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
 
-//    @OneToMany(mappedBy = "board")
-//    private List<Images> imagesBoardList= new ArrayList<>();
+    @OneToMany(mappedBy = "board")
+    private List<Image> imageList= new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "boardId")
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
@@ -72,6 +72,7 @@ public class Board {
         this.boardType = boardType;
         this.reportCount = reportCount;
     }
+
     private void changeTitle(String title){
         if(title!=null)
             this.title=title;

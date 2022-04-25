@@ -2,6 +2,7 @@ package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
@@ -17,26 +18,44 @@ import java.util.stream.Collectors;
 public class BoardService {
     private final BoardRepository boardRepository ;
     private final MemberRepository memberRepository;
+    private final ImageService imageService;
 
-    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository) {
+    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository, ImageService imageService) {
 
         this.boardRepository = boardRepository;
         this.memberRepository= memberRepository;
+        this.imageService = imageService;
     }
 
 
     //게시글 저장
     @Transactional(readOnly = false)
-    public Long writeBoard(@NotNull BoardDTO boardDTO) {
+    public Long writeBoard(@NotNull BoardDTO boardDTO, List<MultipartFile> image) {
 
         Member member = memberRepository.findById(boardDTO.getMemberId());
         //게시글 번호 넘버링
         Long maxRowNum = boardRepository.findMaxRowNum();
-        Board board = new Board(maxRowNum, boardDTO.getTitle(), member, LocalDateTime.now(), LocalDateTime.now(),
-                boardDTO.getContext(), 0L, 0L, 0L, boardDTO.getBoardType(),
-                0L
-        );
-        boardRepository.save(board);
+
+
+        //1 게시판을 저장한다
+        Board board=Board.builder().
+                rowNum(maxRowNum).
+                title(boardDTO.getTitle()).
+                member(member).
+                pubTime(LocalDateTime.now()).
+                modTime(LocalDateTime.now()).
+                context(boardDTO.getContext()).
+                boardType(boardDTO.getBoardType()).
+                views(0L).
+                good(0L).bad(0L).reportCount(0L).build();
+
+        Long id = boardRepository.save(board);
+
+        //2. 게시판에 첨부된 파일을 저장한다.
+        imageService.saveImage(image,id);
+
+
+
         return board.getId();
     }
     //게시글 전체 조회

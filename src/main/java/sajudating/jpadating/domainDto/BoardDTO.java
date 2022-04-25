@@ -49,7 +49,7 @@ public class BoardDTO {
     private List<CommentDTO> comments = new ArrayList<>();
 
 
-//    private List<Images> imagesBoardList= new ArrayList<>();
+    private List<ImageDTO> imageList = new ArrayList<>();
 //
 //
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
@@ -58,13 +58,13 @@ public class BoardDTO {
     private Long reportCount;
 
 
-    public BoardDTO(Board board){
+    public BoardDTO(Board board) {
 
-        this.id=board.getId();
-        this.rowNum= board.getRowNum();
+        this.id = board.getId();
+        this.rowNum = board.getRowNum();
         this.title = board.getTitle();
         this.memberId = board.getMember().getId();
-        this.memberNickName=board.getMember().getNickname();
+        this.memberNickName = board.getMember().getNickname();
         this.pubTime = board.getPubTime();
         this.modTime = board.getModTime();
         this.context = board.getContext();
@@ -72,10 +72,18 @@ public class BoardDTO {
         this.good = board.getGood();
         this.bad = board.getBad();
         this.boardType = board.getBoardType();
-        board.getComments().stream().forEach(c -> {
-            CommentDTO commentDTO = new CommentDTO(c);
-        this.comments.add(commentDTO);
-        });
+        if (board.getComments() != null) {
+            board.getComments().stream().forEach(c -> {
+                CommentDTO commentDTO = new CommentDTO(c);
+                this.comments.add(commentDTO);
+            });
+        }
+        if (board.getImageList() != null) {
+            board.getImageList().stream().forEach(image -> {
+                ImageDTO imageDTO = new ImageDTO(image);
+                this.imageList.add(imageDTO);
+            });
+        }
         this.reportCount = board.getReportCount();
     }
 }
