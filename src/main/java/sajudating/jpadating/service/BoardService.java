@@ -37,7 +37,7 @@ public class BoardService {
         Long maxRowNum = boardRepository.findMaxRowNum();
 
 
-        //1 게시판을 저장한다
+        // 게시글을 저장한다
         Board board=Board.builder().
                 rowNum(maxRowNum).
                 title(boardDTO.getTitle()).

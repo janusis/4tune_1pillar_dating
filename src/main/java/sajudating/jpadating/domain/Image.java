@@ -35,4 +35,7 @@ public class Image {
         this.fileName = fileName;
         this.filePath = filePath;
     }
+
+
+
 }

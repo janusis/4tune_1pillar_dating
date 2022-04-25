@@ -23,7 +23,12 @@ public class ImageRepository  {
             return 0L;
         }
     }
+    public Image findByFileName(String fileName) {
+        return em.createQuery("select i from image i where i.fileName = :fileName", Image.class).setParameter("fileName", fileName).getSingleResult();
+    }
 
+
+    //pk로 이미지 찾기
     public Image findById(Long id){
         return em.find(Image.class, id);
     }

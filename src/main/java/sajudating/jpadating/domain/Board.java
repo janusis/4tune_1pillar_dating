@@ -125,6 +125,12 @@ public class Board {
 
     }
 
+    public void addImageList(Image image){
+        if(image!=null){
+            this.imageList.add(image);
+        }
+    }
+
 
 
 }
