@@ -8,12 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.apiDto.common.CommonApiResponse;
 import sajudating.jpadating.apiDto.common.ResponseMessage;
 import sajudating.jpadating.apiDto.common.StatusCode;
-import sajudating.jpadating.domain.Board;
-import sajudating.jpadating.domain.Image;
 import sajudating.jpadating.domainDto.BoardDTO;
-import sajudating.jpadating.domainDto.ImageDTO;
 import sajudating.jpadating.service.BoardService;
-import sajudating.jpadating.service.ImageService;
+import sajudating.jpadating.service.ImagesService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -26,7 +23,7 @@ import java.util.List;
 public class BoardApiController {
 
     private final BoardService boardService;
-    private final ImageService imageService;
+    private final ImagesService imagesService;
 
     //게시글 저장
     @PostMapping("")
@@ -66,9 +63,10 @@ public class BoardApiController {
     @PutMapping("/{id}")
     public ResponseEntity updateBoard(
             @PathVariable("id") Long id,
-            @RequestBody @Valid BoardDTO boardDTO){
+            @RequestPart("board") @Valid BoardDTO boardDTO,
+            @RequestPart("image") List<MultipartFile> image){
 
-        boardService.changeBoard(id,boardDTO);
+        boardService.changeBoard(id,boardDTO,image);
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,
                         ResponseMessage.UPDATE_BOARD),

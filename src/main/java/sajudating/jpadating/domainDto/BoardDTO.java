@@ -1,7 +1,6 @@
 package sajudating.jpadating.domainDto;
 
 
-import com.mysql.cj.jdbc.Clob;
 import lombok.*;
 import sajudating.jpadating.domain.*;
 
@@ -49,7 +48,7 @@ public class BoardDTO {
     private List<CommentDTO> comments = new ArrayList<>();
 
 
-    private List<ImageDTO> imageList = new ArrayList<>();
+    private List<ImagesDTO> imageList = new ArrayList<>();
 //
 //
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
@@ -80,7 +79,7 @@ public class BoardDTO {
         }
         if (board.getImageList() != null) {
             board.getImageList().stream().forEach(image -> {
-                ImageDTO imageDTO = new ImageDTO(image);
+                ImagesDTO imageDTO = new ImagesDTO(image);
                 this.imageList.add(imageDTO);
             });
         }

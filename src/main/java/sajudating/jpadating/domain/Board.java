@@ -41,8 +41,8 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
 
-    @OneToMany(mappedBy = "board")
-    private List<Image> imageList= new ArrayList<>();
+    @OneToMany(mappedBy = "board", orphanRemoval = true)
+    private List<Images> imageList= new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "boardId")
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
@@ -125,9 +125,9 @@ public class Board {
 
     }
 
-    public void addImageList(Image image){
-        if(image!=null){
-            this.imageList.add(image);
+    public void addImageList(Images images){
+        if(images!=null){
+            this.imageList.add(images);
         }
     }
 
