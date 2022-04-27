@@ -34,8 +34,7 @@ public class BoardApiController {
 
 
         return new ResponseEntity(
-                new CommonApiResponse<>(StatusCode.OK,
-                        ResponseMessage.CREATE_BOARD),
+                new CommonApiResponse<>(StatusCode.OK, ResponseMessage.CREATE_BOARD),
                 HttpStatus.OK);
     }
     //게시물 조회
