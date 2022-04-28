@@ -4,17 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sajudating.jpadating.apiDto.common.CommonApiResponse;
-import sajudating.jpadating.apiDto.common.ResponseMessage;
-import sajudating.jpadating.apiDto.common.StatusCode;
-import sajudating.jpadating.apiDto.member.*;
+import sajudating.jpadating.apiResponse.common.CommonApiResponse;
+import sajudating.jpadating.apiResponse.common.ResponseMessage;
+import sajudating.jpadating.apiResponse.common.StatusCode;
+import sajudating.jpadating.apiResponse.member.*;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.service.MemberService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequiredArgsConstructor

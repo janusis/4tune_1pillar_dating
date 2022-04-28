@@ -1,0 +1,11 @@
+
+8
+java:S1165	"Make this "code" field final.(ßý²’ÿÿÿÿÿ
+;
+java:S1165
+" Make this "message" field final.(ù„è¿ûÿÿÿÿ
+C
+java:S1068	"(Remove this unused "code" private field.(ßý²’ÿÿÿÿÿ
+F
+java:S1068
+"+Remove this unused "message" private field.(ù„è¿ûÿÿÿÿ

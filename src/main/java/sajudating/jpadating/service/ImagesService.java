@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Images;
-import sajudating.jpadating.exception.FileDownloadException;
+import sajudating.jpadating.exception.NotFoundException;
 import sajudating.jpadating.generator.MD5Generator;
 import sajudating.jpadating.repository.BoardRepository;
 import sajudating.jpadating.repository.ImagesRepository;
@@ -103,10 +103,10 @@ public class ImagesService {
             if(resource.exists()) {
                 return resource;
             }else {
-                throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.");
+                throw new NotFoundException(fileName + " 파일을 찾을 수 없습니다.");
             }
         }catch(Exception e) {
-            throw new FileDownloadException(fileName + " 파일을 찾을 수 없습니다.", e);
+            throw new NotFoundException(fileName + " 파일을 찾을 수 없습니다.", e);
         }
     }
 

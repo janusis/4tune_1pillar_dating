@@ -6,8 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import sajudating.jpadating.apiDto.member.AllMembersFindListResponse;
-import sajudating.jpadating.domain.Member;
+import sajudating.jpadating.apiResponse.member.AllMembersFindListResponse;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.service.MemberService;
 

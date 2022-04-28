@@ -4,11 +4,11 @@ package sajudating.jpadating.repository;
 import org.springframework.stereotype.Repository;
 import sajudating.jpadating.domain.*;
 import sajudating.jpadating.domainDto.MemberDTO;
+import sajudating.jpadating.exception.NotFoundException;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
@@ -40,7 +40,8 @@ public class MemberRepository {
                 .setParameter("month",memberDTO.getBirthday().getMonthValue())
                 .setParameter("day", memberDTO.getBirthday().getDayOfMonth())
                 .getResultList();
-        return resultList.stream().findAny().orElseThrow(NoSuchElementException::new).getDayWords();
+        return resultList.stream().findAny().orElseThrow(() -> new NotFoundException("일주를 매핑 할 수 없습니다. 생년월일을 다시한번 확인해주세요"))
+                .getDayWords();
     }
 
     //회원가입
@@ -53,7 +54,7 @@ public class MemberRepository {
     //pk로 멤버 조회
     public Member findById(Long id ){
         Member member = em.find(Member.class, id);
-        return Optional.ofNullable(member).orElseThrow(NoSuchElementException::new) ;
+        return Optional.ofNullable(member).orElseThrow(()-> new NotFoundException("식별키로 회원을 조회 할 수 없습니다. 식별키가 맞는지 다시 한번 확인해주세요")) ;
     }
 
     //유저아이디로 멤버 조회
@@ -67,13 +68,12 @@ public class MemberRepository {
     }
 
     //이름으로 멤버 조회
-    public Optional<Member> findByName(String name) {
+    public List<Member> findByName(String name) {
 
-        List<Member> result = em.createQuery("select m from Member m where m.name = :name", Member.class)
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
 
-        return result.stream().findAny();
     }
     //이름과 생년월일로 멤버 아이디 조회
     public Optional<Member> findIdByNameAndBirthday(String name, LocalDate birthday) {

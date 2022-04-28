@@ -5,10 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sajudating.jpadating.apiDto.common.CommonApiResponse;
-import sajudating.jpadating.apiDto.common.ResponseMessage;
-import sajudating.jpadating.apiDto.common.StatusCode;
-import sajudating.jpadating.domainDto.BoardDTO;
+import sajudating.jpadating.apiResponse.common.CommonApiResponse;
+import sajudating.jpadating.apiResponse.common.ResponseMessage;
+import sajudating.jpadating.apiResponse.common.StatusCode;
 import sajudating.jpadating.domainDto.CommentDTO;
 import sajudating.jpadating.service.CommentService;
 
