@@ -1,5 +1,6 @@
 package sajudating.jpadating.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -7,11 +8,15 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import sajudating.jpadating.apiResponse.common.StatusCode;
-import sajudating.jpadating.apiResponse.exception.ExceptionResponseEntity;
+import sajudating.jpadating.apiResponse.exception.ErrorResponseEntity;
 
+import static sajudating.jpadating.apiResponse.exception.ErrorCode.*;
+
+@Slf4j
 @RestControllerAdvice(annotations = RestController.class)
-public class ExceptionController {
+public class ExceptionController extends ResponseEntityExceptionHandler {
 
     //valid 오류시 오류메시지를 파싱해서 필요한 정보만 메세지에 출력
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -34,19 +39,16 @@ public class ExceptionController {
 
 
 
-    @ExceptionHandler(AlreadyExistException.class)
-    public ExceptionResponseEntity alreadyExistException(AlreadyExistException e){
-        return ExceptionResponseEntity.builder().
-                timeStamp(e.getTimeStamp()).
-                status(e.getStatus()).
-                errorMessage(e.getErrorMessage()).
-                trace(e.getTrace()).
-                build();
+    @ExceptionHandler(value = DuplicateException.class)
+    protected ResponseEntity<ErrorResponseEntity> handleDuplicateException() {
+        log.error("handleDataException throw Exception : {}", DUPLICATE_RESOURCE);
+        return ErrorResponseEntity.toResponseEntity(DUPLICATE_RESOURCE);
     }
-//    //Image 관련 Exception
-//    @ExceptionHandler(NotFoundException.class)
-//    public ResponseEntity fileDownloadException(NotFoundException e){
-//
-//        return ResponseEntity.status(e.getCode()).body(e.getMessage());
-//    }
+
+    @ExceptionHandler(value = NotFoundException.class)
+    protected ResponseEntity<ErrorResponseEntity> handleNotFoundException() {
+        log.error("handleNotFoundException throw Exception : {}", DUPLICATE_RESOURCE);
+        return ErrorResponseEntity.toResponseEntity(DUPLICATE_RESOURCE);
+    }
+
 }

@@ -2,11 +2,12 @@ package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
 import sajudating.jpadating.apiResponse.common.StatusCode;
+import sajudating.jpadating.apiResponse.exception.ErrorCode;
 import sajudating.jpadating.apiResponse.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.MemberDTO;
-import sajudating.jpadating.exception.AlreadyExistException;
+import sajudating.jpadating.exception.DuplicateException;
 import sajudating.jpadating.exception.NotFoundException;
 import sajudating.jpadating.repository.MemberRepository;
 
@@ -31,28 +32,31 @@ public class MemberService {
       회원가입
          */
     public Long join(MemberDTO memberDTO){
-        validateDuplicateMember(memberDTO); //중복회원검증
+        //1. 중복회원 검증
+        validateDuplicateMember(memberDTO);
+        //2. 집 주소 생성
         Address homeAddress = memberRepository.makeFirstAddress(memberDTO);
+        //3. 회사 주소 생성
         Address companyAddress = memberRepository.makeSecondAddress(memberDTO);
+        //4. 일주 생성
         String dayWords = memberRepository.findDayWord(memberDTO);
-
+        //5. 가입일 설정
         LocalDateTime regDate = LocalDateTime.now();
-
+        //6. 완성된 멤버 엔티티 생성
         Member member = new Member(memberDTO);
-
+        //7.멤버 DB에 저장
         return memberRepository.save(member);
     }
     /*
     유저 아이디 중복 검증
      */
     private void validateDuplicateMember(MemberDTO memberDTO) {
-        memberRepository.findByUserId(memberDTO.getUserId()).ifPresent(m-> {
-                            throw new AlreadyExistException(
-                                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm")),
-                                            StatusCode.BAD_REQUEST,
-                                            "이미 존재하는 아이디 입니다.", "아이디 중복검증에서 오류가 발생.");
-                        }
-                );
+        //USERID를 이용하여 아이디가 존재하는지 확인.
+        memberRepository.findByUserId(memberDTO.getUserId()).
+                ifPresent(m-> {
+                            throw new DuplicateException(ErrorCode.DUPLICATE_RESOURCE);
+                }
+        );
     }
 
     /*
@@ -71,14 +75,16 @@ public class MemberService {
      */
     public Member findMember(Long id){
         Member member = memberRepository.findById(id);
-        return Optional.ofNullable(member).orElseThrow(()-> new NotFoundException("회원을 찾을 수 없습니다."));
+        return Optional.ofNullable(member).
+                orElseThrow(()-> new NotFoundException(ErrorCode.MEMBER_NOT_FOUND));
     }
 
     /*
     아이디를 이용해서 멤버 조회
      */
     public Member findOneByUserId(String memberUserid){
-        return memberRepository.findByUserId(memberUserid).orElseThrow(()->new NotFoundException("해당 아이디로 회원을 조회할 수 없습니다. 다시 한번 확인해주세요."));
+        return memberRepository.findByUserId(memberUserid).
+                orElseThrow(()->new NotFoundException(ErrorCode.MEMBER_NOT_FOUND));
     }
 
 
@@ -87,7 +93,8 @@ public class MemberService {
     이름과 생년월일을 통해 아이디 조회
      */
     public Member findUserId(String name, LocalDate birthday){
-        return memberRepository.findIdByNameAndBirthday(name, birthday).orElseThrow(()->new NotFoundException("해당 정보와 일치하는 회원를 찾을 수 없습니다."));
+        return memberRepository.findIdByNameAndBirthday(name, birthday).
+                orElseThrow(()->new NotFoundException(ErrorCode.MEMBER_NOT_FOUND));
 
     }
 
@@ -95,7 +102,8 @@ public class MemberService {
     아이디와 이름,생년월일을 통해 비밀번호 조회
      */
     public Member findPw(String userid, String name, LocalDate birthday){
-        return memberRepository.findPWByUserIdAndNameAndBirthday(userid, name, birthday).orElseThrow(()->new NotFoundException("해당 정보와 일치하는 회원을 찾을 수 없습니다."));
+        return memberRepository.findPWByUserIdAndNameAndBirthday(userid, name, birthday).
+                orElseThrow(()->new NotFoundException(ErrorCode.MEMBER_NOT_FOUND));
     }
 
     /*

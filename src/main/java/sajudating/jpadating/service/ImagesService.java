@@ -5,8 +5,11 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import sajudating.jpadating.apiResponse.exception.ErrorCode;
 import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Images;
+import sajudating.jpadating.exception.FileIOException;
+import sajudating.jpadating.exception.FileSaveException;
 import sajudating.jpadating.exception.NotFoundException;
 import sajudating.jpadating.generator.MD5Generator;
 import sajudating.jpadating.repository.BoardRepository;
@@ -32,9 +35,10 @@ public class ImagesService {
         this.boardRepository = boardRepository;
     }
 
-//    public Long countUp(Long number){
-//        return number+1;
-//    }
+    //카운트 업
+    public Long countUp(Long number){
+        return number+1;
+    }
 
 
 
@@ -44,11 +48,13 @@ public class ImagesService {
         Board board = boardRepository.findById(boardId);
         if(!board.getImageList().isEmpty()){
             board.getImageList().forEach(i->{
+
                 try {
                     imagesRepository.delete(i.getId());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new FileIOException(ErrorCode.FILE_NOT_FOUND);
                 }
+
             });
         }
         file.forEach(i-> {
@@ -66,7 +72,7 @@ public class ImagesService {
                     try {
                         new File(savePath).mkdir();
                     } catch (Exception e) {
-                        e.getStackTrace();
+                        throw new NotFoundException(ErrorCode.DIRECTORY_NOT_FOUND);
                     }
                 }
                 //1.물리적인 저장을 한다
@@ -88,7 +94,7 @@ public class ImagesService {
                 //3.양방향 매핑
                 board.addImageList(images);
             }catch (Exception e){
-                e.getStackTrace();
+                throw new FileSaveException(ErrorCode.FILE_SAVE_EXCEPTION);
             }
         });
     }
@@ -103,10 +109,10 @@ public class ImagesService {
             if(resource.exists()) {
                 return resource;
             }else {
-                throw new NotFoundException(fileName + " 파일을 찾을 수 없습니다.");
+                throw new NotFoundException(ErrorCode.FILE_NOT_FOUND);
             }
         }catch(Exception e) {
-            throw new NotFoundException(fileName + " 파일을 찾을 수 없습니다.", e);
+            throw new NotFoundException(ErrorCode.FILE_NOT_FOUND);
         }
     }
 
