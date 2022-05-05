@@ -97,11 +97,9 @@
 #### 요청메시지 명세 예시 (파라미터)
 
 요청 파라미터가 필요하지 않습니다.
-
 ![image](https://user-images.githubusercontent.com/43841476/166884096-0360e809-17a6-47dd-8402-c1ce05161613.png)
 
 #### 응답메시지 명세 예시 (파라미터)
-
 ![image](https://user-images.githubusercontent.com/43841476/166884379-02b41c14-de06-49ab-b1ab-fd7475249c89.png)
 
 
