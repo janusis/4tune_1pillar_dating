@@ -24,15 +24,8 @@
 * lombok이 반드시 설치 되어 있어야 합니다.
 
 # API Swagger
-
-![image](https://user-images.githubusercontent.com/43841476/166875019-4ba88383-1840-494b-bc56-e3dd22ec3971.png)
-![image](https://user-images.githubusercontent.com/43841476/166875119-c4e9bd27-ae32-40a8-9fe7-fe6e1f24a692.png)
-
-![멤버CRUD_전체](https://user-images.githubusercontent.com/43841476/159403065-f5679637-cae8-45e2-a99b-e61b21f77c12.PNG)
-![멤버CRUD_멤버저장](https://user-images.githubusercontent.com/43841476/159403117-29175323-6053-461c-926e-006816b0f5db.PNG)
-![멤버CRUD_멤버조회](https://user-images.githubusercontent.com/43841476/159403125-1b52fa03-b477-4d0c-bdd3-19eda185b9eb.PNG)
-![멤버CRUD_멤버수정](https://user-images.githubusercontent.com/43841476/159403127-653b3cf4-e128-4769-a832-567faf9a0daa.PNG)
-![멤버CRUD_멤버삭제](https://user-images.githubusercontent.com/43841476/159403133-db8de3b3-14c9-4ba7-b5ab-f478d0a4dde4.PNG)
+### 전체 컨트롤러 입니다.
+![swagger 전체 컨트롤러](https://user-images.githubusercontent.com/43841476/166875673-c9cd5b27-774e-4d7f-8acb-0f1df9edda90.png)
 
 * 해당 API는 Swagger를 통해 테스트 해 볼 수 있습니다. ( " http://localhost:8080/swagger-ui.html " )
 
