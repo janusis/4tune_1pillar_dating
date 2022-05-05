@@ -25,6 +25,9 @@
 
 # API Swagger
 
+![image](https://user-images.githubusercontent.com/43841476/166875019-4ba88383-1840-494b-bc56-e3dd22ec3971.png)
+![image](https://user-images.githubusercontent.com/43841476/166875119-c4e9bd27-ae32-40a8-9fe7-fe6e1f24a692.png)
+
 ![멤버CRUD_전체](https://user-images.githubusercontent.com/43841476/159403065-f5679637-cae8-45e2-a99b-e61b21f77c12.PNG)
 ![멤버CRUD_멤버저장](https://user-images.githubusercontent.com/43841476/159403117-29175323-6053-461c-926e-006816b0f5db.PNG)
 ![멤버CRUD_멤버조회](https://user-images.githubusercontent.com/43841476/159403125-1b52fa03-b477-4d0c-bdd3-19eda185b9eb.PNG)
