@@ -1,7 +1,7 @@
 # 소름 ( "사주팔자의 일주를 이용한 데이팅앱" )
 
 # 목차
-   1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/edit/main/doc/step1.md)
+   1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/step1.md)
    2. (미개발)로그인 기능 ( 로그인, 로그아웃, 중복아이디 체크, 아이디 찾기, 비밀번호 찾기)
    3. 게시판 기능 ( 게시글 생성, 게시글 조회, 게시글 수정, 게시글 삭제 )
    4. 댓글 기능 ( 댓글 생성, 댓글 조회, 댓글 수정, 댓글 삭제, 대댓글 작성 )
