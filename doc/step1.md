@@ -5,7 +5,6 @@
 
 #### 요청메시지 명세 (파라미터)
 
-
 |항목명(영문)|항목명(국문)|필수여부|샘플데이터|비고|
 |---|---|---|---|---|
 |userId|유저 아이디|o|example_id|유저의 아이디|
@@ -26,7 +25,11 @@
 |CompanyDetail_address|상세주소|x|xx동 xxx호|나머지 주소|
 |CompanyZipcode|우편번호|x|08069|우편번호|
 
+
 ![image](https://user-images.githubusercontent.com/43841476/166876477-33fda49b-d9ad-479b-a76a-c1469c462d7f.png)
+
+
+
 
 #### 응답메시지 명세 (파라미터)
 
@@ -36,7 +39,13 @@
 |responseMessage| 성공 여부 확인 메시지| 회원 가입 성공|
 |data| 전송 받을 데이터(필요 시) | null |
 
+
 ![image](https://user-images.githubusercontent.com/43841476/166876817-26b1b93d-d665-438d-9265-9b65713fd893.png)
+
+
+
+
+
 
 ## 2. 회원 조회 (Read)
 
@@ -59,7 +68,11 @@
 |responseMessage|성공 여부 확인 메시지| 회원 정보 조회 성공 |
 | data| 전송 받을 데이터| [{"id": 1, "userId": "example_id5","nickName": "jojojo","name": "김조조"}, { "id": 2, "userId": "example_id1", "nickName": "jojojo", "name": "김조조" } ]|
 
+
 ![image](https://user-images.githubusercontent.com/43841476/166883492-cd8ce418-4a62-4211-91b8-a4b6c87cc91f.png)
+
+
+
 
 ## 3. 회원 정보 수정(Update)
 
@@ -73,6 +86,7 @@
 #### 응답메시지 명세 예시 (파라미터)
 
 ![image](https://user-images.githubusercontent.com/43841476/166883908-8535feaa-8437-4074-935d-cd12c34e9b02.png)
+
 
 
 ## 3. 회원 정보 삭제(Update)
