@@ -11,10 +11,10 @@ import static org.springframework.http.HttpStatus.*;
 public enum ErrorCode {
 
     /* 400 BAD_REQUEST : 잘못된 요청 */
-
     MISMATCH_REFRESH_TOKEN(BAD_REQUEST, "리프레시 토큰의 유저 정보가 일치하지 않습니다"),
     CANNOT_FOLLOW_MYSELF(BAD_REQUEST, "자기 자신은 팔로우 할 수 없습니다"),
     FILE_SAVE_EXCEPTION(BAD_REQUEST,"파일을 저장하는 도중 오류가 발생했습니다."),
+    DATA_CHANGE_EXCEPTION(BAD_REQUEST,"데이터를 갱신하는 도중 오류가 발생했습니다."),
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
     INVALID_AUTH_TOKEN(UNAUTHORIZED, "권한 정보가 없는 토큰입니다"),
@@ -29,8 +29,14 @@ public enum ErrorCode {
     NOT_FOLLOW(NOT_FOUND, "팔로우 중이지 않습니다"),
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
-    DUPLICATE_RESOURCE(CONFLICT, "정보가 이미 존재합니다"),
+    /*
+        ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().value() == 409
+        ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().name() == CONFLICT
+        ErrorCode.DUPLICATE_RESOURCE.name() == DUPLICATE_RESOURCE
+        ErrorCode.DUPLICATE_RESOURCE.getDetail() == 정보가 이미 존재합니다
+     */
 
+    DUPLICATE_RESOURCE(CONFLICT, "정보가 이미 존재합니다"),
 
     ;
 

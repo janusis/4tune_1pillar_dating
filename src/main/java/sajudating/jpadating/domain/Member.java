@@ -3,6 +3,7 @@ package sajudating.jpadating.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import sajudating.jpadating.apiResponse.exception.ErrorCode;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.exception.DataChangeException;
 
@@ -166,7 +167,7 @@ public class Member {
             changeModifiedDate(LocalDateTime.now());
             return this.getId();
         }catch (Exception e){
-            throw new DataChangeException("데이터 변경 중 오류가 발생하였습니다.");
+            throw new DataChangeException(ErrorCode.DATA_CHANGE_EXCEPTION);
         }
     }
 
