@@ -15,7 +15,7 @@
 |birthday|생일|o|1999-12-01|태어난 날|
 |birthTime|태어난시간|x|자시|12간지 시|
 |nickname|닉네임|o|jojojo|닉네임|
-|gender|성별|x|MALE,FEMALE|성별|
+|gender|성별|x|남,여|성별|
 |HomeLotNumAddress|지번주소|x|서울특별시 양천구 신월동 587 서울신남초등학교|동 주소|
 |HomeRoadNameAddress|도로명주소|x|서울특별시 양천구 남부순환로83길 44(신월동)| 도로명 주소|
 |HomeDetail_address|상세주소|x|xx동 xxx호|나머지 주소|
