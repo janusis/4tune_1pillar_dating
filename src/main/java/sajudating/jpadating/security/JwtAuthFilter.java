@@ -1,11 +1,16 @@
 package sajudating.jpadating.security;
 
-import org.springframework.context.support.AbstractApplicationContext;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.securi
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,8 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Component
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
+    @Autowired
     private TokenProvider tokenProvider;
 
     @Override
@@ -33,13 +42,18 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 logger.info("Authenticated user Id : " + userId);
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userId, null, AuthorityUtils.NO_AUTHORITIES);
-
+                usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+                securityContext.setAuthentication(usernamePasswordAuthenticationToken);
+                SecurityContextHolder.setContext(securityContext);
 
             }
 
 
+        }catch (Exception e){
+            logger.error("시큐리티 컨텍스트에 인증을 설정할 수 없습니다.");
         }
-
+        filterChain.doFilter(request,response);
     }
     //토큰을 파싱
     private String parseBearerToken(HttpServletRequest request) {

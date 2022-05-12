@@ -73,9 +73,7 @@ public class MemberService {
 
 
             return new LoginDTO().builder()
-                    .id(loginDTO.getId())
-                    .userId(loginDTO.getUserId())
-                    .pw(loginDTO.getPw())
+                    .id(member.getId())
                     .token(token)
                     .build();
         }

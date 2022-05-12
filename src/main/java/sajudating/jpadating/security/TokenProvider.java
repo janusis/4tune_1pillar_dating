@@ -3,6 +3,8 @@ package sajudating.jpadating.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sajudating.jpadating.domain.Member;
@@ -16,9 +18,14 @@ import java.util.Date;
 
 @Slf4j
 @Service
+
 public class TokenProvider {
+
+
     private static final String SECRET_KEY = "4398HF8N489GN39G2OK";
 
+    public TokenProvider() {
+    }
 
     //jwt 토큰생성
     public String create(Member member) {
