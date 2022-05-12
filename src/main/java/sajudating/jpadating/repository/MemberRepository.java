@@ -54,6 +54,7 @@ public class MemberRepository {
 
     //pk로 멤버 조회
     public Member findById(Long id ){
+
         Member member = em.find(Member.class, id);
         return Optional.ofNullable(member).orElseThrow(()-> new NotFoundException(ErrorCode.MEMBER_NOT_FOUND)) ;
     }
@@ -63,6 +64,17 @@ public class MemberRepository {
 
         List<Member> member = em.createQuery("select m from Member m where m.userId = :userId", Member.class)
                 .setParameter("userId", userid)
+                .getResultList();
+
+        return member.stream().findAny();
+    }
+
+    //유저아이디와 패스워드로 멤버 조회
+    public Optional<Member> findByUserIdAndPw(String userid, String pw) {
+
+        List<Member> member = em.createQuery("select m from Member m where m.userId = :userId and m.pw = :pw", Member.class)
+                .setParameter("userId", userid)
+                .setParameter("pw",pw)
                 .getResultList();
 
         return member.stream().findAny();

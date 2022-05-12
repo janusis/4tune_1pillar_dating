@@ -1,0 +1,9 @@
+
+W	java:S107:"BConstructor has 18 parameters, which is greater than 7 authorized.(­ÕÍí
+f	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ¢¸ª
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î™°
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î˜¦Ÿÿÿÿÿÿ
+~	java:S1161"]Rename this field "homeDetail_address" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ÿÿÿÿÿ8È¨·‹0
+|	java:S1166"`Rename this field "companyDetail_address" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚŒö±8È¨·‹0
+F
+java:S6035!"0Replace this alternation with a character class.(»±î­

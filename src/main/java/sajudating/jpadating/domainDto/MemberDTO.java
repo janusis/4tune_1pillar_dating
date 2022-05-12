@@ -1,10 +1,7 @@
 package sajudating.jpadating.domainDto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import sajudating.jpadating.domain.Gender;
 import sajudating.jpadating.domain.Member;
@@ -18,7 +15,9 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Builder
 public class MemberDTO {
+
 
     private Long id;
     @NotBlank(message = "아이디에 공백이 포함 되어 있습니다.")
@@ -45,16 +44,17 @@ public class MemberDTO {
     public Gender gender;
 
 
-    private String HomeLotNumAddress;
-    private String HomeRoadNameAddress;
-    private String HomeDetail_address;
-    private String HomeZipcode;
+    private String homeLotNumAddress;
+    private String homeRoadNameAddress;
+    private String homeDetail_address;
+    private String homeZipcode;
 
-    private String CompanyLotNumAddress;
-    private String CompanyRoadNameAddress;
-    private String CompanyDetail_address;
-    private String CompanyZipcode;
+    private String companyLotNumAddress;
+    private String companyRoadNameAddress;
+    private String companyDetail_address;
+    private String companyZipcode;
 
+    @Builder
     public MemberDTO(String userId, String pw, String name,
                      String email, String phone, LocalDate birthday,
                      String birthTime, String nickname, String dayPillar,
@@ -71,13 +71,36 @@ public class MemberDTO {
         this.nickname = nickname;
         this.dayPillar = dayPillar;
         this.gender = gender;
-        HomeLotNumAddress = homeLotNumAddress;
-        HomeRoadNameAddress = homeRoadNameAddress;
-        HomeDetail_address = homeDetail_address;
-        HomeZipcode = homeZipcode;
-        CompanyLotNumAddress = companyLotNumAddress;
-        CompanyRoadNameAddress = companyRoadNameAddress;
-        CompanyDetail_address = companyDetail_address;
-        CompanyZipcode = companyZipcode;
+        this.homeLotNumAddress = homeLotNumAddress;
+        this.homeRoadNameAddress = homeRoadNameAddress;
+        this.homeDetail_address = homeDetail_address;
+        this.homeZipcode = homeZipcode;
+        this.companyLotNumAddress = companyLotNumAddress;
+        this.companyRoadNameAddress = companyRoadNameAddress;
+        this.companyDetail_address = companyDetail_address;
+        this.companyZipcode = companyZipcode;
     }
+
+    public MemberDTO toEntity(Member member) {
+        this.userId = member.getUserId();
+        this.pw = member.getPw();
+        this.name = member.getName();
+        this.email = member.getEmail();
+        this.phone = member.getPhone();
+        this.birthday = member.getBirthday();
+        this.birthTime = member.getBirthTime();
+        this.nickname = member.getNickname();
+        this.dayPillar = member.getDayPillar();
+        this.gender = member.getGender();
+        this.homeLotNumAddress = member.getHomeAddress().getLotNumAddress();
+        this.homeRoadNameAddress = member.getHomeAddress().getRoadNameAddress();
+        this.homeDetail_address = member.getHomeAddress().getDetail_address();
+        this.homeZipcode = member.getHomeAddress().getZipcode();
+        this.companyLotNumAddress = member.getCompanyAddress().getLotNumAddress();
+        this.companyRoadNameAddress = member.getCompanyAddress().getRoadNameAddress();
+        this.companyDetail_address = member.getCompanyAddress().getDetail_address();
+        this.companyZipcode = member.getCompanyAddress().getZipcode();
+        return this;
+    }
+
 }

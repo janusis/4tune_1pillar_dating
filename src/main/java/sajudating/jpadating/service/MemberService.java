@@ -1,15 +1,19 @@
 package sajudating.jpadating.service;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import sajudating.jpadating.apiResponse.common.StatusCode;
 import sajudating.jpadating.apiResponse.exception.ErrorCode;
 import sajudating.jpadating.apiResponse.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Address;
 import sajudating.jpadating.domain.Member;
+import sajudating.jpadating.domainDto.LoginDTO;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.exception.DuplicateException;
 import sajudating.jpadating.exception.NotFoundException;
 import sajudating.jpadating.repository.MemberRepository;
+import sajudating.jpadating.security.TokenProvider;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -58,6 +62,24 @@ public class MemberService {
                 }
         );
     }
+
+
+    // 로그인 인증 확인
+        public LoginDTO loginMember(LoginDTO loginDTO){
+            Member member = memberRepository
+                    .findByUserIdAndPw(loginDTO.getUserId(), loginDTO.getPw())
+                    .orElseThrow(() -> new NotFoundException(ErrorCode.UNAUTHORIZED_MEMBER));
+            String token = new TokenProvider().create(member);
+
+
+            return new LoginDTO().builder()
+                    .id(loginDTO.getId())
+                    .userId(loginDTO.getUserId())
+                    .pw(loginDTO.getPw())
+                    .token(token)
+                    .build();
+        }
+
 
     /*
      *전체회원 조회

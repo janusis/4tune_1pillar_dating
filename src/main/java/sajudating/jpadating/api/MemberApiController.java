@@ -8,6 +8,7 @@ import sajudating.jpadating.apiResponse.common.CommonApiResponse;
 import sajudating.jpadating.apiResponse.common.ResponseMessage;
 import sajudating.jpadating.apiResponse.common.StatusCode;
 import sajudating.jpadating.apiResponse.member.*;
+import sajudating.jpadating.domainDto.LoginDTO;
 import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.service.MemberService;
@@ -32,6 +33,12 @@ public class MemberApiController {
                 new CommonApiResponse<CreateMemberResponse>(StatusCode.OK,
                         ResponseMessage.CREATED_USER),
                 HttpStatus.OK);
+    }
+    //로그인
+    @PostMapping("/login")
+    public ResponseEntity loginMember(@RequestBody LoginDTO loginDTO){
+        LoginDTO responseLoginDTO = memberService.loginMember(loginDTO);
+        return ResponseEntity.ok().body(responseLoginDTO);
     }
 
     //회원조회(전체)
