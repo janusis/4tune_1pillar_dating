@@ -13,7 +13,9 @@ import sajudating.jpadating.domainDto.MemberDTO;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.service.MemberService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Enumeration;
 import java.util.List;
 
 @RestController
@@ -44,6 +46,13 @@ public class MemberApiController {
     //회원조회(전체)
     @GetMapping("")
     public ResponseEntity listMember(){
+//        Enumeration<String> headerNames = request.getHeaderNames();
+//        while(headerNames.hasMoreElements()){
+//            String hd = headerNames.nextElement();
+//            System.out.print("headerNames.nextElement() = " + hd + "|" );
+//            System.out.println("request.getHeader(hd); = " + request.getHeader(hd));
+//        }
+
         List<AllMembersFindListResponse> collect = memberService.findMembers();
         return new ResponseEntity(
                 new CommonApiResponse<List>(StatusCode.OK,
