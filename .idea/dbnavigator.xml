@@ -29,7 +29,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="ac696947-8442-4d2e-8d07-837cde97e34d">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main"><![CDATA[use datingjpa;
+      <console name="Connection" type="STANDARD" schema="datingjpa" session="Main"><![CDATA[use datingjpa;
 
 show variables like 'c%';
 
