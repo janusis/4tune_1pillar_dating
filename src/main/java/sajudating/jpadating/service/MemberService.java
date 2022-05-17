@@ -1,9 +1,6 @@
 package sajudating.jpadating.service;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import sajudating.jpadating.apiResponse.common.StatusCode;
 import sajudating.jpadating.apiResponse.exception.ErrorCode;
 import sajudating.jpadating.apiResponse.member.AllMembersFindListResponse;
 import sajudating.jpadating.domain.Address;
@@ -18,7 +15,6 @@ import sajudating.jpadating.security.TokenProvider;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

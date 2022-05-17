@@ -18,7 +18,7 @@ public enum ErrorCode {
     LOGIN_FAILED_EXCEPTION(BAD_REQUEST,"로그인에 실패했습니다. 아이디와 패스워드를 다시 확인 해주세요."),
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
-//    INVALID_AUTH_TOKEN(UNAUTHORIZED, "권한 정보가 없는 토큰입니다"),
+    INVALID_AUTH_TOKEN(UNAUTHORIZED, "권한 정보가 없는 토큰입니다"),
     UNAUTHORIZED_MEMBER(UNAUTHORIZED, "현재 내 계정 정보가 존재하지 않습니다"),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
