@@ -19,17 +19,17 @@ public class ExceptionTest {
                         .build()
                 );
      */
-    @Test
-    public void 테스트1(){
-        //given
-        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().value());
-        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().name());
-        System.out.println(ErrorCode.DUPLICATE_RESOURCE.name());
-        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getDetail());
-
-        //when
-
-        //then
-
-    }
+//    @Test
+//    public void 테스트1(){
+//        //given
+//        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().value());
+//        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getHttpStatus().name());
+//        System.out.println(ErrorCode.DUPLICATE_RESOURCE.name());
+//        System.out.println(ErrorCode.DUPLICATE_RESOURCE.getDetail());
+//
+//        //when
+//
+//        //then
+//
+//    }
 }

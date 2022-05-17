@@ -10,8 +10,8 @@ import sajudating.jpadating.service.MemberService;
 @Transactional
 public class MemberServiceTest {
 
-    @Autowired
-    MemberRepository memberRepository;
-    @Autowired
-    MemberService memberService;
+//    @Autowired
+//    MemberRepository memberRepository;
+//    @Autowired
+//    MemberService memberService;
 }

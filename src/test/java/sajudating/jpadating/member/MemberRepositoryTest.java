@@ -20,32 +20,32 @@ import java.util.Optional;
 @SpringBootTest
 @Transactional
 public class MemberRepositoryTest {
-
-    @Autowired
-    MemberRepository memberRepository;
-    @Autowired
-    MemberService memberService;
-
-    @Test
-    public void 회원가입(){
-        //given
-
-
-        //when
-
-        //then
-
-    }
-
-    @Test
-    public void 회원조회(){
-        //given
-
-
-        //when
-
-        //then
-
-    }
+//
+//    @Autowired
+//    MemberRepository memberRepository;
+//    @Autowired
+//    MemberService memberService;
+//
+//    @Test
+//    public void 회원가입(){
+//        //given
+//
+//
+//        //when
+//
+//        //then
+//
+//    }
+//
+//    @Test
+//    public void 회원조회(){
+//        //given
+//
+//
+//        //when
+//
+//        //then
+//
+//    }
     
 }

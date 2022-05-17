@@ -9,13 +9,13 @@ import sajudating.jpadating.repository.BoardRepository;
 @SpringBootTest
 @Transactional
 public class boardRepoTest {
-
-    @Autowired
-    BoardRepository boardRepository;
-
-    @Test
-    public void 쿼리테스트(){
-        Long maxRowNum = boardRepository.findMaxRowNum();
-        System.out.println("------------------------------------------------------------" + maxRowNum);
-    }
+//
+//    @Autowired
+//    BoardRepository boardRepository;
+//
+//    @Test
+//    public void 쿼리테스트(){
+//        Long maxRowNum = boardRepository.findMaxRowNum();
+//        System.out.println("------------------------------------------------------------" + maxRowNum);
+//    }
 }

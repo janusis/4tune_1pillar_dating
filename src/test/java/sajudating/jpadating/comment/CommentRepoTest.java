@@ -12,8 +12,8 @@ import sajudating.jpadating.repository.CommentRepository;
 
 public class CommentRepoTest {
 
-    @Autowired
-    private CommentRepository commentRepository;
-
+//    @Autowired
+//    private CommentRepository commentRepository;
+//
 
 }
