@@ -85,13 +85,3 @@ Esrc/main/java/sajudating/jpadating/exception/ExceptionController.java,5\9\5974
 Qsrc/main/java/sajudating/jpadating/apiResponse/exception/ErrorResponseEntity.java,9\1\919d1bb5ac06ad17c163e2d5c771dd1a97e3c252
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-n
->src/main/java/sajudating/jpadating/security/JwtAuthFilter.java,2\c\2c10af8ea7e33d0ae94d46ad7a9fc88419b19de4
-n
->src/main/java/sajudating/jpadating/security/TokenProvider.java,7\0\7045a1aac5e42f5abf3e58235a130f63bb648d71
-m
-=src/main/java/sajudating/jpadating/service/MemberService.java,8\1\81880bdd2560590f0be38477d8f05b07c629e231
-o
-?src/main/java/sajudating/jpadating/security/SecurityConfig.java,f\2\f290ff77d25de11f043a4ed5c54badd0c8ac9d4b
-o
-?src/main/java/sajudating/jpadating/api/MemberApiController.java,e\d\ed9a6a73dde547bea8e340fa090218fca36adb20

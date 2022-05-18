@@ -1,15 +1,0 @@
-
-V	java:S125"<This block of commented-out lines of code should be removed.(–õÔæÿÿÿÿÿ
-V	java:S1252"<This block of commented-out lines of code should be removed.(áª±ñşÿÿÿÿ
-X
-java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8èêà‹0
-u
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8èêà‹0
-s
-java:S1128"QRemove this unused import 'org.springframework.context.annotation.Configuration'.(¬²Úäşÿÿÿÿ8èêà‹0
-
-java:S1128"qRemove this unused import 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter'.(÷ìïŠ8èêà‹0
-Œ
-java:S1128"jRemove this unused import 'org.springframework.security.web.authentication.www.BasicAuthenticationFilter'.(çìóÕûÿÿÿÿ8èêà‹0
-v
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ŞÀÃøüÿÿÿÿ8èêà‹0
