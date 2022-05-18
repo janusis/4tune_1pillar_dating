@@ -43,7 +43,7 @@ CREATE TABLE test(
 
 insert into test(content) value ('테스트');
 
-select * from test;]]></console>
+select * from saju_calender where id > 10000;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -54,6 +54,7 @@ select * from test;]]></console>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="ac696947-8442-4d2e-8d07-837cde97e34d" dataset="datingjpa.test" active-filter-id="" />
+    <filter-actions connection-id="ac696947-8442-4d2e-8d07-837cde97e34d" dataset="datingjpa.saju_calender" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
