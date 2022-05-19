@@ -1,8 +1,8 @@
 # 소름 ( "사주팔자의 일주를 이용한 데이팅앱" )
 
 # 목차
-   1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/step1.md)
-   2. 로그인 기능 ( jwt를 이용하여 아이디, 패스워드를 입력했을경우에 토큰을 반환 하도록 기능 구현)
+   1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/회원가입.md)
+   2. [로그인 기능 ( jwt를 이용하여 아이디, 패스워드를 입력했을경우에 토큰을 반환 하는 것 까지)](https://github.com/jojojojocho/jpadating/blob/main/doc/로그인.md)
    3. 게시판 기능 ( 게시글 생성, 게시글 조회, 게시글 수정, 게시글 삭제 )
    4. 댓글 기능 ( 댓글 생성, 댓글 조회, 댓글 수정, 댓글 삭제, 대댓글 작성 )
    5. (미개발)채팅 기능 
