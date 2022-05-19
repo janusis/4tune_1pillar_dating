@@ -39,11 +39,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/v1/api/members/**")
-//                .antMatchers(HttpMethod.POST,"/members/**").permitAll()
+//                .antMatchers(HttpMethod.GET,"/v1/api/members/**").permitAll()
+                .antMatchers("/**").permitAll()
 //                .antMatchers(HttpMethod.PUT,"/members/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE,"/members/**").permitAl()
-                .permitAll()
                 .anyRequest()
                 .authenticated();
         http.addFilterAfter(

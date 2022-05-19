@@ -1,0 +1,19 @@
+
+V
+java:S1854,";Remove this useless assignment to local variable "regDate".(ÚÕ”Ùùÿÿÿÿ
+W
+java:S1854*"<Remove this useless assignment to local variable "dayWords".(ŞÌË‚ÿÿÿÿÿ
+]
+java:S1854("BRemove this useless assignment to local variable "companyAddress".(¬Š‘ûÿÿÿÿ
+U
+java:S1854&"?Remove this useless assignment to local variable "homeAddress".(ÌËìŠ
+F
+java:S1481&"0Remove this unused "homeAddress" local variable.(ÌËìŠ
+N
+java:S1481("3Remove this unused "companyAddress" local variable.(¬Š‘ûÿÿÿÿ
+H
+java:S1481*"-Remove this unused "dayWords" local variable.(ŞÌË‚ÿÿÿÿÿ
+G
+java:S1481,",Remove this unused "regDate" local variable.(ÚÕ”Ùùÿÿÿÿ
+K
+java:S2209G"5Change this instance-reference to a static reference.(ÚÏµø

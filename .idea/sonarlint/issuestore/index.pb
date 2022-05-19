@@ -51,8 +51,6 @@ x
 Hsrc/main/java/sajudating/jpadating/exception/IllegalStatusException.java,3\6\366cff1021fb801c098f0d77798bd6a7d2c9a1c8
 e
 5src/main/java/sajudating/jpadating/domain/Member.java,4\7\474cabd08d264c0e2f315f686c1f333bfc63faac
-e
-5src/main/java/sajudating/jpadating/SwaggerConfig.java,f\2\f2556be92f2d52ddef3a57fd0f8b7d12297e8029
 s
 Csrc/main/java/sajudating/jpadating/repository/MemberRepository.java,f\a\fae77779af9ca95426a544fc255340b86353f90c
 k
@@ -73,8 +71,6 @@ s
 Csrc/main/java/sajudating/jpadating/exception/FileSaveException.java,c\6\c6ab08a1fc2560330d94642f8af1c6a8711c9149
 s
 Csrc/main/java/sajudating/jpadating/exception/NotFoundException.java,5\d\5d3e27003acd48cb3d7cdce9b645424459ff0fdf
-l
-<src/main/java/sajudating/jpadating/JpadatingApplication.java,c\5\c520adffdadd6c041c92cae9aa0f55e3ded57d58
 u
 Esrc/main/java/sajudating/jpadating/exception/DataChangeException.java,9\c\9c7202fe6dc1551cba36cbad504a8d100ee157f1
 t
@@ -85,3 +81,9 @@ Esrc/main/java/sajudating/jpadating/exception/ExceptionController.java,5\9\5974
 Qsrc/main/java/sajudating/jpadating/apiResponse/exception/ErrorResponseEntity.java,9\1\919d1bb5ac06ad17c163e2d5c771dd1a97e3c252
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+m
+=src/main/java/sajudating/jpadating/service/MemberService.java,8\1\81880bdd2560590f0be38477d8f05b07c629e231
+l
+<src/main/java/sajudating/jpadating/JpadatingApplication.java,c\5\c520adffdadd6c041c92cae9aa0f55e3ded57d58
+e
+5src/main/java/sajudating/jpadating/SwaggerConfig.java,f\2\f2556be92f2d52ddef3a57fd0f8b7d12297e8029
