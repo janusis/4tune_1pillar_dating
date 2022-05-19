@@ -25,8 +25,8 @@
 |CompanyDetail_address|상세주소|x|xx동 xxx호|나머지 주소|
 |CompanyZipcode|우편번호|x|08069|우편번호|
 
-
-![image](https://user-images.githubusercontent.com/43841476/166876477-33fda49b-d9ad-479b-a76a-c1469c462d7f.png)
+request 예시
+![image](https://user-images.githubusercontent.com/43841476/169193253-34a70fc5-f4c9-439c-86ab-9a9b70d18a2a.png)
 
 
 
@@ -40,7 +40,7 @@
 |data| 전송 받을 데이터(필요 시) | null |
 
 
-![image](https://user-images.githubusercontent.com/43841476/166876817-26b1b93d-d665-438d-9265-9b65713fd893.png)
+![image](https://user-images.githubusercontent.com/43841476/169193351-fea6ce87-09c5-464a-87be-4a565b716ddd.png)
 
 
 
@@ -57,7 +57,7 @@
 
 요청 파라미터가 필요 하지 않습니다.
 
-![image](https://user-images.githubusercontent.com/43841476/166884416-dbb6d9d5-e1c1-4766-a8fd-96dc46b866c1.png)
+![image](https://user-images.githubusercontent.com/43841476/169193476-9cca9840-0ae9-4f5b-9189-873c2c9c568b.png)
 
 
 #### 응답메시지 명세 (파라미터)
@@ -69,7 +69,7 @@
 | data| 전송 받을 데이터| [{"id": 1, "userId": "example_id5","nickName": "jojojo","name": "김조조"}, { "id": 2, "userId": "example_id1", "nickName": "jojojo", "name": "김조조" } ]|
 
 
-![image](https://user-images.githubusercontent.com/43841476/166883492-cd8ce418-4a62-4211-91b8-a4b6c87cc91f.png)
+![image](https://user-images.githubusercontent.com/43841476/169193530-a452a11e-feb4-4c66-8d1f-9328489f49ca.png)
 
 
 
@@ -81,11 +81,11 @@
 
 #### 요청메시지 명세 예시 (파라미터)
 
-![image](https://user-images.githubusercontent.com/43841476/166883754-f863df98-3c5d-40be-a439-4fd3abfdf44d.png)
+![image](https://user-images.githubusercontent.com/43841476/169193635-f32322f4-615d-42b9-9fbc-30e1740289c8.png)
 
 #### 응답메시지 명세 예시 (파라미터)
 
-![image](https://user-images.githubusercontent.com/43841476/166883908-8535feaa-8437-4074-935d-cd12c34e9b02.png)
+![image](https://user-images.githubusercontent.com/43841476/169193675-5088a680-1e47-40b4-b807-9cb2782d2631.png)
 
 
 
@@ -97,10 +97,10 @@
 #### 요청메시지 명세 예시 (파라미터)
 
 요청 파라미터가 필요하지 않습니다.
-![image](https://user-images.githubusercontent.com/43841476/166884811-19ffb8d6-9c2f-4b98-910d-969a05f4708b.png)
+![image](https://user-images.githubusercontent.com/43841476/169193783-7ed79b42-583e-4d98-9aca-8a99c49eef2b.png)
 
 #### 응답메시지 명세 예시 (파라미터)
-![image](https://user-images.githubusercontent.com/43841476/166884379-02b41c14-de06-49ab-b1ab-fd7475249c89.png)
+![image](https://user-images.githubusercontent.com/43841476/169193820-0644b68e-b4dc-454c-b551-41ff18268600.png)
 
 
 
