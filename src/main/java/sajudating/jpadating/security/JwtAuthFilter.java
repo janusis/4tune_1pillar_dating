@@ -50,7 +50,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 securityContext.setAuthentication(usernamePasswordAuthenticationToken);
                 SecurityContextHolder.setContext(securityContext);
-
+                logger.info("시큐리티 콘텍스트 안에 데이터 넣음");
             }
         }catch (Exception e){
             logger.error("시큐리티 컨텍스트에 인증을 설정할 수 없습니다.");
