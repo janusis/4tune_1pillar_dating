@@ -1,1 +1,33 @@
-.
+## 1. 로그인 (jwt 토큰 반환)
+
+#### 기능명 : 로그인
+#### 상세기능 설명 : 아이디와 패스워드를 body에 담아 보내게 되면 jwt 토큰이 반환됩니다.
+
+#### 요청메시지 명세 (파라미터)
+
+|항목명(영문)|항목명(국문)|필수여부|샘플데이터|비고|
+|---|---|---|---|---|
+|userId|유저 아이디|o|example_id5|유저의 아이디|
+|pw|패스워드|o|example123|유저의 패스워드|
+
+request 예시
+![image](https://user-images.githubusercontent.com/43841476/169194457-58abf6f3-9db5-482c-838f-b9dbfc8833db.png)
+
+
+
+
+#### 응답메시지 명세 (파라미터)
+
+|항목명(영문)|항목명(국문)|샘플데이터|비고|
+|---|---|---|---|
+|token| jwt 토큰 (Header.Payload.signature)| eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaXNzIjoiZGVtbyBhcHAiLCJpYXQiOjE2NTI5Mjc3MjAsImV4cCI6MTY1MzAxNDEyMH0.KgNktYueNGjLsBGZQ0hIFqu9wFD6ca8KtXc10l8EmQJjx6Yy9JMNnZW9bv3KhYhdnPQPo8q4G8gYQD8Qbkig8g |
+|id| 회원의 pk| 1 |
+|userId| 응답시에는 항상 null 입니다. | null |
+|pw| 응답시에는 항상 null 입니다. | null |
+
+![image](https://user-images.githubusercontent.com/43841476/169194532-a415a175-58f4-4b40-8dd9-93523162e8a8.png)
+
+
+
+
+
