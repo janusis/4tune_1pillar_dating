@@ -27,7 +27,7 @@ public class BoardApiController {
 
     //게시글 저장
     @PostMapping("")
-    public ResponseEntity saveBoard(@RequestBody("board") @Valid BoardDTO boardDTO
+    public ResponseEntity saveBoard(@RequestPart("board") @Valid BoardDTO boardDTO
 //                                   @RequestPart("image") List<MultipartFile> image
                                    ){
 

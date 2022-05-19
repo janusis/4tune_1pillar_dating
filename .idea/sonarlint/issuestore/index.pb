@@ -49,12 +49,8 @@ x
 Hsrc/main/java/sajudating/jpadating/exception/IllegalStatusException.java,3\6\366cff1021fb801c098f0d77798bd6a7d2c9a1c8
 e
 5src/main/java/sajudating/jpadating/domain/Member.java,4\7\474cabd08d264c0e2f315f686c1f333bfc63faac
-s
-Csrc/main/java/sajudating/jpadating/repository/MemberRepository.java,f\a\fae77779af9ca95426a544fc255340b86353f90c
 k
 ;src/main/java/sajudating/jpadating/domainDto/MemberDTO.java,d\a\da4d9013f492829d8942dc1a604448b60a53c6ce
-w
-Gsrc/main/java/sajudating/jpadating/apiResponse/exception/ErrorCode.java,6\8\68dde76fb7b912569e12378013c3903bf9759eed
 {
 Ksrc/main/java/sajudating/jpadating/apiResponse/exception/ErrorResponse.java,7\9\7937b410c3bb811652fccb534925944f136e5a37
 j
@@ -65,8 +61,6 @@ q
 Asrc/main/java/sajudating/jpadating/exception/FileIOException.java,d\1\d1122b5dc63a7a9933ea27a8c514cc86553979c5
 s
 Csrc/main/java/sajudating/jpadating/exception/FileSaveException.java,c\6\c6ab08a1fc2560330d94642f8af1c6a8711c9149
-s
-Csrc/main/java/sajudating/jpadating/exception/NotFoundException.java,5\d\5d3e27003acd48cb3d7cdce9b645424459ff0fdf
 u
 Esrc/main/java/sajudating/jpadating/exception/DataChangeException.java,9\c\9c7202fe6dc1551cba36cbad504a8d100ee157f1
 Å
