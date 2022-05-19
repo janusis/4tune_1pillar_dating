@@ -79,7 +79,5 @@ n
 >src/main/java/sajudating/jpadating/security/JwtAuthFilter.java,2\c\2c10af8ea7e33d0ae94d46ad7a9fc88419b19de4
 n
 >src/main/java/sajudating/jpadating/security/TokenProvider.java,7\0\7045a1aac5e42f5abf3e58235a130f63bb648d71
-o
-?src/main/java/sajudating/jpadating/security/SecurityConfig.java,f\2\f290ff77d25de11f043a4ed5c54badd0c8ac9d4b
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
