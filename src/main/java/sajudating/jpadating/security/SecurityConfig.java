@@ -18,7 +18,8 @@ import sajudating.jpadating.security.JwtAuthFilter;
 @Component
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+public class SecurityConfig  extends WebSecurityConfigurerAdapter
+{
 
 
     private final JwtAuthFilter jwtAuthFilter;
@@ -45,7 +46,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 //                .antMatchers(HttpMethod.DELETE,"/members/**").permitAl()
                 .anyRequest()
                 .authenticated();
-        http.addFilterAfter(
+//        http.authorizeRequests()
+//                .antMatchers(HttpMethod.POST,"/v1/api/**").permitAll()
+//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+////                .antMatchers("/order/**").hasAnyRole("USER")
+//                .anyRequest().authenticated();
+        http.addFilterBefore(
                 jwtAuthFilter, BasicAuthenticationFilter.class);
 //                jwtAuthFilter, CorsFilter.class);
 

@@ -3,6 +3,7 @@ package sajudating.jpadating.api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.apiResponse.common.CommonApiResponse;
@@ -27,13 +28,11 @@ public class BoardApiController {
 
     //게시글 저장
     @PostMapping("")
-    public ResponseEntity saveBoard(@RequestPart("board") @Valid BoardDTO boardDTO
-//                                   @RequestPart("image") List<MultipartFile> image
+    public ResponseEntity saveBoard(@RequestPart("board") @Valid BoardDTO boardDTO,
+                                   @Nullable @RequestPart("image") List<MultipartFile> image
                                    ){
 
-        Long id = boardService.writeBoard(boardDTO
-//                ,image
-        );
+        Long id = boardService.writeBoard(boardDTO,image);
 
 
         return new ResponseEntity(
