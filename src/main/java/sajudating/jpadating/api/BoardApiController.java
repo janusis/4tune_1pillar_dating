@@ -27,10 +27,13 @@ public class BoardApiController {
 
     //게시글 저장
     @PostMapping("")
-    public ResponseEntity saveBoard(@RequestPart("board") @Valid BoardDTO boardDTO,
-                                   @RequestPart("image") List<MultipartFile> image){
+    public ResponseEntity saveBoard(@RequestPart("board") @Valid BoardDTO boardDTO
+//                                   @RequestPart("image") List<MultipartFile> image
+                                   ){
 
-        Long id = boardService.writeBoard(boardDTO,image);
+        Long id = boardService.writeBoard(boardDTO
+//                ,image
+        );
 
 
         return new ResponseEntity(
@@ -62,10 +65,13 @@ public class BoardApiController {
     @PutMapping("/{id}")
     public ResponseEntity updateBoard(
             @PathVariable("id") Long id,
-            @RequestPart("board") @Valid BoardDTO boardDTO,
-            @RequestPart("image") List<MultipartFile> image){
+            @RequestPart("board") @Valid BoardDTO boardDTO
+//            @RequestPart("image") List<MultipartFile> image
+            ){
 
-        boardService.changeBoard(id,boardDTO,image);
+        boardService.changeBoard(id,boardDTO
+//                ,image
+        );
         return new ResponseEntity(
                 new CommonApiResponse<>(StatusCode.OK,
                         ResponseMessage.UPDATE_BOARD),

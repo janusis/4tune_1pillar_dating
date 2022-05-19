@@ -18,19 +18,23 @@ import java.util.stream.Collectors;
 public class BoardService {
     private final BoardRepository boardRepository ;
     private final MemberRepository memberRepository;
-    private final ImagesService imagesService;
+//    private final ImagesService imagesService;
 
-    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository, ImagesService imagesService) {
+    public BoardService(BoardRepository boardRepository, MemberRepository memberRepository
+//            , ImagesService imagesService
+    ) {
 
         this.boardRepository = boardRepository;
         this.memberRepository= memberRepository;
-        this.imagesService = imagesService;
+//        this.imagesService = imagesService;
     }
 
 
     //게시글 저장
     @Transactional(readOnly = false)
-    public Long writeBoard(@NotNull BoardDTO boardDTO, List<MultipartFile> image) {
+    public Long writeBoard(@NotNull BoardDTO boardDTO
+//            , List<MultipartFile> image
+    ) {
 
         Member member = memberRepository.findById(boardDTO.getMemberId());
         //게시글 번호 넘버링
@@ -52,7 +56,7 @@ public class BoardService {
         Long id = boardRepository.save(board);
 
         //2. 게시판에 첨부된 파일을 저장한다.
-        imagesService.saveImage(image,id);
+//        imagesService.saveImage(image,id);
 
 
 
@@ -76,12 +80,14 @@ public class BoardService {
 
     //게시글 수정
     @Transactional
-    public Long changeBoard(Long id,BoardDTO boardDTO, List<MultipartFile> image){
+    public Long changeBoard(Long id,BoardDTO boardDTO
+//            ,List<MultipartFile> image
+    ){
 
         Board board = boardRepository.findById(id);
         board.updateBoard(boardDTO);
         Long boardId = boardRepository.change(board);
-        imagesService.saveImage(image,id);
+//        imagesService.saveImage(image,id);
         return boardId;
     }
 
