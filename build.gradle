@@ -1,7 +1,7 @@
 
 
 plugins {
-	id 'org.springframework.boot' version '2.4.3'
+	id 'org.springframework.boot' version '2.5.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
@@ -60,8 +60,9 @@ dependencies {
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
 
-
-
+	//warning: unknown enum constant When.MAYBE
+	//  reason: class file for javax.annotation.meta.When not found 빌드시 이 오류를 해결하기 위한 디펜던시
+	implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
 
 
