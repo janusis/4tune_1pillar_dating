@@ -66,7 +66,7 @@ public class Member {
 //
 //
 //    @OneToMany(mappedBy = "member")
-//    private List<Board> boardList= new ArrayList<>();
+//    private List<Boards> boardList= new ArrayList<>();
 
 
     public Member(Long id) {

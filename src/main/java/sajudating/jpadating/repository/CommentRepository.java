@@ -39,7 +39,7 @@ public class CommentRepository {
 
     public List<Comment> findCommentsByBoardId(Long boardId){
         Boards boards = em.find(Boards.class, boardId);
-        List<Comment> commentList = em.createQuery("select c from Comment c where c.board = :boardId order by c.parent, c.pubTime" , Comment.class).
+        List<Comment> commentList = em.createQuery("select c from Comment c where c.boards = :boardId order by c.parent, c.pubTime" , Comment.class).
                 setParameter("boardId", boards).
                 getResultList();
 

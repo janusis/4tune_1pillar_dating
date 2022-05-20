@@ -27,7 +27,7 @@ public class BoardRepository {
 
     // 최대 게시글 번호 가져와서 +1 해서 리턴
     public Long findMaxRowNum(){
-        Object rowNum = em.createQuery("select max(b.rowNum) from Board b").getSingleResult();
+        Object rowNum = em.createQuery("select max(b.rowNum) from Boards b").getSingleResult();
         if(rowNum!=null){
             return (Long) rowNum+1;
         }else{
@@ -43,14 +43,14 @@ public class BoardRepository {
     //게시글 전체 조회
 
     public List<Boards> findAll(){
-        return em.createQuery("select b from Board b where b.member != null order by b.id ", Boards.class).
+        return em.createQuery("select b from Boards b where b.member != null order by b.id ", Boards.class).
                 getResultList();
     }
 
     //멤버 pk와 최초게시일로 게시글 조회
     public Boards findByMemberIdAndPubTime(BoardDTO boardDTO){
         Member member = em.find(Member.class, boardDTO.getMemberId());
-        List<Boards> result= em.createQuery("select b from Board b where b.member = :member and b.pubTime = :pubTime",
+        List<Boards> result= em.createQuery("select b from Boards b where b.member = :member and b.pubTime = :pubTime",
                         Boards.class)
                 .setParameter("member", member)
                 .setParameter("pubTime", boardDTO.getPubTime())

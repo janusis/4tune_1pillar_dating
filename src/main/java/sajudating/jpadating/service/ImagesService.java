@@ -64,7 +64,7 @@ public class ImagesService {
                 String originalFilename = i.getOriginalFilename();
                 int idx = originalFilename.lastIndexOf(".");
                 String fileExtension = originalFilename.substring(idx);
-                String temp = "board" + boardId + "_" + nowString;
+                String temp = "boards" + boardId + "_" + nowString;
                 String fileName = new MD5Generator(temp).toString() + fileExtension;
 
                 String savePath = System.getProperty("user.dir") + "\\img\\";
