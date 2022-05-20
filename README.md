@@ -6,8 +6,7 @@
    1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/회원가입.md)
    2. [로그인 기능 ( jwt를 이용하여 아이디, 패스워드를 입력했을경우에 토큰을 반환 하는 것 까지)](https://github.com/jojojojocho/jpadating/blob/main/doc/로그인.md)
    3. [게시판 기능 ( 게시글 생성, 게시글 조회, 게시글 수정, 게시글 삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/게시판.md)
-   4. 댓글 기능 ( 댓글 생성, 댓글 조회, 댓글 수정, 댓글 삭제, 대댓글 작성 )
-   5. AWS EC2 프리티어를 이용한 배포
+   4. [댓글 기능 ( 댓글 생성, 댓글 조회, 댓글 수정, 댓글 삭제, 대댓글 작성 )](https://github.com/jojojojocho/jpadating/blob/main/doc/댓글.md)
 
 # 프로젝트 개요
    바쁜 일상으로 인해 만남의 기회가 적거나 없는 현대인들에게 사주팔자의 일주를 통한 맞춤형 매칭 서비스를 제공하여 
