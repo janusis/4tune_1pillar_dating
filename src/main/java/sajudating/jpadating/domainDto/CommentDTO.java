@@ -1,15 +1,10 @@
 package sajudating.jpadating.domainDto;
 
 import lombok.Data;
-import lombok.Getter;
-import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Comment;
 import sajudating.jpadating.domain.DeleteStatus;
-import sajudating.jpadating.domain.Member;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +48,7 @@ public class CommentDTO {
         this.context = comment.getContext();
         this.memberId = comment.getMember().getId();
         this.memberNickname = comment.getMember().getNickname();
-        this.boardId = comment.getBoard().getId();
+        this.boardId = comment.getBoards().getId();
         this.isDeleted = comment.getIsDeleted();
         if(comment.getParent()!=null){
             this.parentId = comment.getParent().getId();

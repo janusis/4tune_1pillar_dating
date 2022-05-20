@@ -15,9 +15,9 @@ public class ReportBoard {
     @Column(name = "report_board_id")
     private Long id;
 
-    @ManyToOne(targetEntity = Board.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Boards.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
-    private Board board;
+    private Boards boards;
 
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "report_member_member_id")

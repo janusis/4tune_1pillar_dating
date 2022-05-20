@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import sajudating.jpadating.apiResponse.exception.ErrorCode;
-import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Boards;
 import sajudating.jpadating.domain.Images;
 import sajudating.jpadating.exception.FileIOException;
 import sajudating.jpadating.exception.FileSaveException;
@@ -45,9 +45,9 @@ public class ImagesService {
     //이미지 저장
     public void saveImage(List<MultipartFile> file,Long boardId){
         //경로 설정을 위한 코드....
-        Board board = boardRepository.findById(boardId);
-        if(!board.getImageList().isEmpty()){
-            board.getImageList().forEach(i->{
+        Boards boards = boardRepository.findById(boardId);
+        if(!boards.getImageList().isEmpty()){
+            boards.getImageList().forEach(i->{
 
                 try {
                     imagesRepository.delete(i.getId());
@@ -81,7 +81,7 @@ public class ImagesService {
                 i.transferTo(new File(filePath));
 
                 Images images = Images.builder().
-                        board(board).
+                        boards(boards).
                         fileName(fileName).
                         originFileName(originalFilename).
                         filePath(filePath).
@@ -92,7 +92,7 @@ public class ImagesService {
                 Long imageId = imagesRepository.save(images);
 
                 //3.양방향 매핑
-                board.addImageList(images);
+                boards.addImageList(images);
             }catch (Exception e){
                 throw new FileSaveException(ErrorCode.FILE_SAVE_EXCEPTION);
             }

@@ -1,7 +1,7 @@
 package sajudating.jpadating.repository;
 
 import org.springframework.stereotype.Repository;
-import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Boards;
 import sajudating.jpadating.domain.Comment;
 
 import javax.persistence.EntityManager;
@@ -38,9 +38,9 @@ public class CommentRepository {
     //boardId를 이용한 게시글 별 코멘트 조회
 
     public List<Comment> findCommentsByBoardId(Long boardId){
-        Board board = em.find(Board.class, boardId);
+        Boards boards = em.find(Boards.class, boardId);
         List<Comment> commentList = em.createQuery("select c from Comment c where c.board = :boardId order by c.parent, c.pubTime" , Comment.class).
-                setParameter("boardId", board).
+                setParameter("boardId", boards).
                 getResultList();
 
         return commentList;

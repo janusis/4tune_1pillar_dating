@@ -140,10 +140,10 @@ public class MemberRepository {
         }
 
         // 게시글의 해당 memberId를 null로 변경
-        List<Board> board = em.createQuery("select b from Board b where b.member = :member ", Board.class)
+        List<Boards> boards = em.createQuery("select b from Board b where b.member = :member ", Boards.class)
                 .setParameter("member", member1)
                 .getResultList();
-        for (Board b : board) {
+        for (Boards b : boards) {
             b.deleteBoard();
         }
 

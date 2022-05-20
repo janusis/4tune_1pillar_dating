@@ -27,7 +27,7 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
-    private Board board;
+    private Boards boards;
 
     @Enumerated(value = EnumType.STRING)
     private DeleteStatus isDeleted;
@@ -52,11 +52,11 @@ public class Comment {
     private Long reportCount;
 
 
-    public Comment(String context, Member member, Board board, DeleteStatus isDeleted, Comment parent,
+    public Comment(String context, Member member, Boards boards, DeleteStatus isDeleted, Comment parent,
                    LocalDateTime pubTime, LocalDateTime modTime, Long good, Long bad, Long reportCount) {
         this.context = context;
         this.member = member;
-        this.board = board;
+        this.boards = boards;
         this.isDeleted = isDeleted;
         this.parent = parent;
         this.pubTime = pubTime;

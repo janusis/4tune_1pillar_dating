@@ -2,11 +2,10 @@ package sajudating.jpadating.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Boards;
 import sajudating.jpadating.domain.Comment;
 import sajudating.jpadating.domain.DeleteStatus;
 import sajudating.jpadating.domain.Member;
-import sajudating.jpadating.domainDto.BoardDTO;
 import sajudating.jpadating.domainDto.CommentDTO;
 import sajudating.jpadating.repository.BoardRepository;
 import sajudating.jpadating.repository.CommentRepository;
@@ -39,7 +38,7 @@ public class CommentService {
 
     public Long writeComment(CommentDTO commentDTO){
 
-        Board board = boardRepository.findById(commentDTO.getBoardId());
+        Boards boards = boardRepository.findById(commentDTO.getBoardId());
         Member member = memberRepository.findById(commentDTO.getMemberId());
         Comment parent;
 
@@ -47,7 +46,7 @@ public class CommentService {
             parent = commentRepository.findById(commentDTO.getParentId());
         else parent=null;
 
-        Comment comment = new Comment(commentDTO.getContext(),member, board, DeleteStatus.FALSE, parent,
+        Comment comment = new Comment(commentDTO.getContext(),member, boards, DeleteStatus.FALSE, parent,
                 LocalDateTime.now(), LocalDateTime.now(), 0L,0L,0L);
 
         Long id = commentRepository.save(comment);

@@ -3,7 +3,7 @@ package sajudating.jpadating.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Boards;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
 import sajudating.jpadating.repository.BoardRepository;
@@ -39,7 +39,7 @@ public class BoardService {
 
 
         // 게시글을 저장한다
-        Board board=Board.builder().
+        Boards boards = Boards.builder().
                 rowNum(maxRowNum).
                 title(boardDTO.getTitle()).
                 member(member).
@@ -50,7 +50,7 @@ public class BoardService {
                 views(0L).
                 good(0L).bad(0L).reportCount(0L).build();
 
-        Long id = boardRepository.save(board);
+        Long id = boardRepository.save(boards);
 
         //2. 게시판에 첨부된 파일을 저장한다.
         if(image !=null )
@@ -58,12 +58,12 @@ public class BoardService {
 
 
 
-        return board.getId();
+        return boards.getId();
     }
     //게시글 전체 조회
     @Transactional
     public List<BoardDTO> findBoards(){
-        List<Board> boards = boardRepository.findAll();
+        List<Boards> boards = boardRepository.findAll();
         return boards.stream()
                 .map(BoardDTO::new)
                 .collect(Collectors.toList());
@@ -72,8 +72,8 @@ public class BoardService {
     //게시글 단건 조회
     @Transactional
     public BoardDTO findBoard(Long id){
-        Board board = boardRepository.findById(id);
-        return new BoardDTO(board);
+        Boards boards = boardRepository.findById(id);
+        return new BoardDTO(boards);
     }
 
     //게시글 수정
@@ -82,9 +82,9 @@ public class BoardService {
 //            ,List<MultipartFile> image
     ){
 
-        Board board = boardRepository.findById(id);
-        board.updateBoard(boardDTO);
-        Long boardId = boardRepository.change(board);
+        Boards boards = boardRepository.findById(id);
+        boards.updateBoard(boardDTO);
+        Long boardId = boardRepository.change(boards);
 //        imagesService.saveImage(image,id);
         return boardId;
     }

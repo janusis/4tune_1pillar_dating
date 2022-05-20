@@ -1,12 +1,11 @@
 package sajudating.jpadating.repository;
 
 import org.springframework.stereotype.Repository;
-import sajudating.jpadating.domain.Board;
+import sajudating.jpadating.domain.Boards;
 import sajudating.jpadating.domain.Member;
 import sajudating.jpadating.domainDto.BoardDTO;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,9 +20,9 @@ public class BoardRepository {
     }
 
     //pk로 게시글 찾기
-    public Board findById(Long boardId){
-        Board board = em.find(Board.class, boardId);
-        return Optional.ofNullable(board).orElseThrow(NoSuchElementException::new);
+    public Boards findById(Long boardId){
+        Boards boards = em.find(Boards.class, boardId);
+        return Optional.ofNullable(boards).orElseThrow(NoSuchElementException::new);
     }
 
     // 최대 게시글 번호 가져와서 +1 해서 리턴
@@ -37,22 +36,22 @@ public class BoardRepository {
     }
 
     //게시글 저장
-    public Long save(Board board) {
-        em.persist(board);
-        return board.getId();
+    public Long save(Boards boards) {
+        em.persist(boards);
+        return boards.getId();
     }
     //게시글 전체 조회
 
-    public List<Board> findAll(){
-        return em.createQuery("select b from Board b where b.member != null order by b.id ", Board.class).
+    public List<Boards> findAll(){
+        return em.createQuery("select b from Board b where b.member != null order by b.id ", Boards.class).
                 getResultList();
     }
 
     //멤버 pk와 최초게시일로 게시글 조회
-    public Board findByMemberIdAndPubTime(BoardDTO boardDTO){
+    public Boards findByMemberIdAndPubTime(BoardDTO boardDTO){
         Member member = em.find(Member.class, boardDTO.getMemberId());
-        List<Board> result= em.createQuery("select b from Board b where b.member = :member and b.pubTime = :pubTime",
-                        Board.class)
+        List<Boards> result= em.createQuery("select b from Board b where b.member = :member and b.pubTime = :pubTime",
+                        Boards.class)
                 .setParameter("member", member)
                 .setParameter("pubTime", boardDTO.getPubTime())
                 .getResultList();
@@ -60,15 +59,15 @@ public class BoardRepository {
     }
 
     //게시글 수정
-    public Long change(Board board){
-        em.persist(board);
-        return board.getId();
+    public Long change(Boards boards){
+        em.persist(boards);
+        return boards.getId();
     }
     //게시글 삭제
 
     public Long delete(Long boardId){
-        Board board = em.find(Board.class, boardId);
-        em.remove(board);
+        Boards boards = em.find(Boards.class, boardId);
+        em.remove(boards);
         return boardId;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Board {
+public class Boards {
 
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,24 +41,24 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
 
-    @OneToMany(mappedBy = "board", orphanRemoval = true)
+    @OneToMany(mappedBy = "boards", orphanRemoval = true)
     private List<Images> imageList= new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "boardId")
 //    private List<ReportBoard> reportBoardList= new ArrayList<>();
 
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "boards")
     private List<Comment> comments = new ArrayList<>();
 
     private Long reportCount;
 
-    protected Board(){
+    protected Boards(){
 
     }
 
     @Builder
-    public Board(Long rowNum, String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
-                 String context, Long views, Long good, Long bad, BoardType boardType,
+    public Boards(Long rowNum, String title, Member member, LocalDateTime pubTime, LocalDateTime modTime,
+                  String context, Long views, Long good, Long bad, BoardType boardType,
                   Long reportCount) {
         this.rowNum =rowNum;
         this.title = title;

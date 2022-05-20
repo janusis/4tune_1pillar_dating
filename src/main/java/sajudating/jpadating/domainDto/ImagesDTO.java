@@ -2,7 +2,6 @@ package sajudating.jpadating.domainDto;
 
 import lombok.Builder;
 import lombok.Data;
-import sajudating.jpadating.domain.Board;
 import sajudating.jpadating.domain.Images;
 
 

@@ -17,7 +17,7 @@ public class Images {
 
     @ManyToOne(fetch = FetchType.LAZY )
     @JoinColumn(name = "board_id")
-    private Board board;
+    private Boards boards;
 
     private String originFileName;
 
@@ -29,9 +29,9 @@ public class Images {
 
 
     @Builder
-    public Images(Long id, Board board, String originFileName, String fileName, String filePath, String urlPath) {
+    public Images(Long id, Boards boards, String originFileName, String fileName, String filePath, String urlPath) {
         this.id = id;
-        this.board = board;
+        this.boards = boards;
         this.originFileName = originFileName;
         this.fileName = fileName;
         this.filePath = filePath;

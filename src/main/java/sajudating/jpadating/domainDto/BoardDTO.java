@@ -57,32 +57,32 @@ public class BoardDTO {
     private Long reportCount;
 
 
-    public BoardDTO(Board board) {
+    public BoardDTO(Boards boards) {
 
-        this.id = board.getId();
-        this.rowNum = board.getRowNum();
-        this.title = board.getTitle();
-        this.memberId = board.getMember().getId();
-        this.memberNickName = board.getMember().getNickname();
-        this.pubTime = board.getPubTime();
-        this.modTime = board.getModTime();
-        this.context = board.getContext();
-        this.views = board.getViews();
-        this.good = board.getGood();
-        this.bad = board.getBad();
-        this.boardType = board.getBoardType();
-        if (board.getComments() != null) {
-            board.getComments().stream().forEach(c -> {
+        this.id = boards.getId();
+        this.rowNum = boards.getRowNum();
+        this.title = boards.getTitle();
+        this.memberId = boards.getMember().getId();
+        this.memberNickName = boards.getMember().getNickname();
+        this.pubTime = boards.getPubTime();
+        this.modTime = boards.getModTime();
+        this.context = boards.getContext();
+        this.views = boards.getViews();
+        this.good = boards.getGood();
+        this.bad = boards.getBad();
+        this.boardType = boards.getBoardType();
+        if (boards.getComments() != null) {
+            boards.getComments().stream().forEach(c -> {
                 CommentDTO commentDTO = new CommentDTO(c);
                 this.comments.add(commentDTO);
             });
         }
-        if (board.getImageList() != null) {
-            board.getImageList().stream().forEach(image -> {
+        if (boards.getImageList() != null) {
+            boards.getImageList().stream().forEach(image -> {
                 ImagesDTO imageDTO = new ImagesDTO(image);
                 this.imageList.add(imageDTO);
             });
         }
-        this.reportCount = board.getReportCount();
+        this.reportCount = boards.getReportCount();
     }
 }
