@@ -1,5 +1,7 @@
 # 소름 ( "사주팔자의 일주를 이용한 데이팅앱" )
 
+# 사용 기술
+   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
 # 목차
    1. [회원 기능 ( 회원가입, 회원조회, 회원수정, 회원삭제 )](https://github.com/jojojojocho/jpadating/blob/main/doc/회원가입.md)
    2. [로그인 기능 ( jwt를 이용하여 아이디, 패스워드를 입력했을경우에 토큰을 반환 하는 것 까지)](https://github.com/jojojojocho/jpadating/blob/main/doc/로그인.md)
