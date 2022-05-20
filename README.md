@@ -16,8 +16,8 @@
 # 개발환경
 * SPRING BOOT 2.4.3 (Spring Security의 버전 호환 문제로 인해 프로젝트 중간에 다운그레이드 하였음.)
 * JAVA 11
-* JPA
-* MYSQL
+* JPA (Hibernate)
+* MYSQL 8
 * LOMBOK
 * GRADLE
 * SPRING SECURITY
