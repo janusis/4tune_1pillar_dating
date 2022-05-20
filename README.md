@@ -13,7 +13,7 @@
   시간을 절약하면서 자신의 성향과 맞는 사람들을 매칭 시켜 주어 좀 더 성공률이 높은 연애를 할수 있도록 제공.
   
 # 개발환경
-* SPRING BOOT 2.4.3 (Spring Security의 버전 호환 문제로 인해 프로젝트 중간에 다운그레이드 하였음.)
+* SPRING BOOT 2.5.7 (Spring Security의 버전 호환 문제로 인해 프로젝트 중간에 다운그레이드 하였음.)
 * JAVA 11
 * JPA (Hibernate)
 * MYSQL 8
