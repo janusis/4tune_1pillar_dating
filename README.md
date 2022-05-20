@@ -23,8 +23,9 @@
 * SPRING SECURITY
 * AWS EC2 (LINUX 2)
 
-# 프로젝트 실행환경
-* lombok이 반드시 설치 되어 있어야 합니다.
+# 프로젝트 진행
+
+2022.02.21 ~ 
 
 # API Swagger
 ### 전체 컨트롤러 입니다.
