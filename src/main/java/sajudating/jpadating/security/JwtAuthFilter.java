@@ -34,9 +34,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         try
         {
+
             //리퀘스트에서 토큰 가져오기
             String token = parseBearerToken(request);
             logger.info("filter is running ....");
+            logger.info("requestURI : "+request.getRequestURI());
 
             //토큰 검사하기. jwt이므로 바로 검증 가능
             if (token != null && !token.equalsIgnoreCase("null")) {
