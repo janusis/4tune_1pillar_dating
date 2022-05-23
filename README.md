@@ -1,4 +1,4 @@
-# 소름 ( "사주팔자의 일주를 이용한 데이팅앱" )
+# 소름 ( "사주팔자의 일주를 이용한 데이팅앱" )(REST API)
 
 # 사용 기술
 <img src="https://img.shields.io/badge/JAVA-007396?style=flat&logo=java&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/SPRING BOOT-6DB33F?style=flat&logo=springboot&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/JPA-90E59A?style=flat&logo=JPA&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/MYSQL-4479A1?style=flat&logo=MYSQL&logoColor=white" height="25"/> <img src="https://img.shields.io/badge/LOMBOK-FF5722?style=flat&logo=LOMBOK&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/GRADLE-02303A?style=flat&logo=GRADLE&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/AWS EC2-232F3E?style=flat&logo=Amazon AWS&logoColor=white" height="25"/>  <img src="https://img.shields.io/badge/SPRING SECURITY-6DB33F?style=flat&logo=Spring Security&logoColor=white" height="25"/>
