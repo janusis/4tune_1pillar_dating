@@ -31,5 +31,5 @@
 ### 전체 컨트롤러 입니다.
 ![swagger 전체 컨트롤러](https://user-images.githubusercontent.com/43841476/166875673-c9cd5b27-774e-4d7f-8acb-0f1df9edda90.png)
 
-* 해당 API는 Swagger를 통해 테스트 해 볼 수 있습니다. ( " http://13.209.126.57:8080/swagger-ui.html " )
+* 해당 API는 Swagger를 통해 테스트 해 볼 수 있습니다. ( " http://3.38.88.225:8080/swagger-ui.html " )
 
