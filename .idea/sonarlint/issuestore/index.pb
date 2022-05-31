@@ -85,3 +85,5 @@ n
 >src/main/java/sajudating/jpadating/security/JwtAuthFilter.java,2\c\2c10af8ea7e33d0ae94d46ad7a9fc88419b19de4
 h
 8src/main/java/sajudating/jpadating/MvcConfiguration.java,1\f\1fd4258e430ffb53b7d36538073da065ae469c1f
+q
+Asrc/main/java/sajudating/jpadating/controller/HomeController.java,9\5\9505827720abe53253b6103692f8ac23727aba98
