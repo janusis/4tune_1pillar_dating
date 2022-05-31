@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>시작페이지</title>
+</head>
+<body>
+<div id="weather">
+    <span></span>
+    <span></span>
+</div>
+<h1 style="text-align: center;">재미로 만든 연습용 페이지 입니다.</h1>
+<h1 style="text-align: center;">https://github.com/jojojojocho/jpadating의 Readme.md파일을 참조해주세요</h1>
+<h2 id="clock">00:00:00</h2>
+<form id="login-form" class="hidden">
+    <input
+            required
+            maxlength="10"
+            type="text"
+            placeholder="Put your name."/>
+    <input type="submit" value="로그인" class="btn1"/>
+</form>
+
+<h1 id="greeting" class="hidden"></h1>
+
+
+<form id="todo-form">
+    <input required type="text" placeholder="해야 할 일을 쓰세요.">
+</form>
+<footer>
+    <div id="quote">
+        <span></span>
+        <span></span>
+    </div>
+</footer>
+<ul id="todo-list"></ul>
+<script src="js/background.js"></script>
+<script src="js/lifequotes.js"></script>
+<script src="js/hello.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/todo.js"></script>
+<script src="js/weather.js"></script>
+
+</body>
+</html>
