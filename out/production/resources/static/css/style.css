@@ -1,0 +1,102 @@
+.hidden {
+    display: none;
+}
+
+
+.btn {
+    position: relative;
+    padding: 5px 5px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(117, 57, 57, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    color: #6e6e6e;
+    background-color: #fff38a;
+}
+
+.btn:hover{
+    color: white;
+    background-color: skyblue;
+}
+.btn1{
+    position: relative;
+    padding: 5px 5px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(117, 57, 57, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    color: #6e6e6e;
+    background-color: #98e99f;
+}
+
+.btn1:hover{
+    background-color: #fce205;
+    color: #6e6e6e;
+}
+
+#clock{
+    font-family: 'cursive', cursive; font-size: 10em; 
+    text-align: center; 
+    color: #d67f57; 
+    text-shadow: 5px 5px #2D63A7; 
+    margin: 0;
+
+}
+
+#greeting{
+    font-family: 'cursive', cursive; font-size: 3em; 
+    text-align: center; 
+    color: #9531bd; 
+    text-shadow: 5px 5px #181768; 
+    margin: 0;
+}
+
+#login-form{
+    font-family: 'cursive', cursive; font-size: 3em; 
+    text-align: center; 
+    color: #d67f57; 
+    text-shadow: 5px 5px #2D63A7; 
+    margin: 0;
+}
+
+#todo-form{
+    font-family: 'cursive', cursive; font-size: 4em; 
+    text-align: right; 
+    color: #d67f57; 
+    text-shadow: 5px 5px #2D63A7; 
+    margin: 0;
+}
+#todo-list{
+    font-family: 'Georgia', cursive; font-size: 2em; 
+    text-align: right; 
+    color: #16f70e; 
+    text-shadow: 1px 1px #2D63A7; 
+    margin: 0;
+}
+
+input{
+    height:40px;
+    width:300px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+#quote {
+    font-family: 'Dongle', sans-serif;
+    font-size: 3em;
+    text-align: right;
+    color: #210bcf;
+    margin: 0;
+  }
+
+ #weather {
+    font-family: 'Dongle', sans-serif;
+    font-size: 2em;
+    text-align: right;
+    color: #e70707;
+    margin: 0;
+  }

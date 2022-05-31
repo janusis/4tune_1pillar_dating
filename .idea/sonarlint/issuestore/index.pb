@@ -31,8 +31,6 @@ o
 ?src/test/java/sajudating/jpadating/exception/ExceptionTest.java,9\8\9855f32d8aac630bbe0a6f50b2a9a551a5ad7c15
 o
 ?src/test/java/sajudating/jpadating/comment/CommentRepoTest.java,c\4\c48c38e292b977dde5a7b6d9f1a52d352515ad72
-q
-Asrc/main/java/sajudating/jpadating/controller/HomeController.java,9\5\9505827720abe53253b6103692f8ac23727aba98
 x
 Hsrc/main/java/sajudating/jpadating/exception/IllegalStatusException.java,3\6\366cff1021fb801c098f0d77798bd6a7d2c9a1c8
 k
@@ -85,5 +83,5 @@ f
 6src/main/java/sajudating/jpadating/domain/Comment.java,c\f\cf89eca1ef6dd5a76fd2ccf2903da615d131b0c9
 n
 >src/main/java/sajudating/jpadating/security/JwtAuthFilter.java,2\c\2c10af8ea7e33d0ae94d46ad7a9fc88419b19de4
-n
->src/main/java/sajudating/jpadating/service/CommentService.java,8\9\89cadef0d847c6269aa0309a6833714860313676
+h
+8src/main/java/sajudating/jpadating/MvcConfiguration.java,1\f\1fd4258e430ffb53b7d36538073da065ae469c1f
