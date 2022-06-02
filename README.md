@@ -23,6 +23,11 @@
 * SPRING SECURITY
 * AWS EC2 (LINUX 2)
 
+# ER 다이어그램
+
+![image](https://user-images.githubusercontent.com/43841476/171556284-27065649-aa01-4b13-8af0-b97bf590fd77.png)
+
+
 # 프로젝트 진행
 
 2022.02.21 ~ 
